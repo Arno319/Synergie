@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Toggle</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        .toggle-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 30px;
+            background-color: #ccc;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            padding: 3px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .toggle-circle {
+            width: 24px;
+            height: 24px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        .dark-mode .toggle-container {
+            background-color: #222;
+        }
+        .dark-mode .toggle-circle {
+            transform: translateX(30px);
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toggle-container" onclick="toggleDarkMode()">
+        <div class="toggle-circle"></div>
+    </div>
+
+    <script>
+        // Controleer bij het laden van de pagina of dark mode actief moet zijn
+        function loadDarkMode() {
+            if (localStorage.getItem("darkMode") === "enabled") {
+                document.body.classList.add("dark-mode");
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+            // Opslaan in localStorage
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("darkMode", "enabled");
+            } else {
+                localStorage.setItem("darkMode", "disabled");
+            }
+        }
+
+        // Roep de functie aan bij het laden van de pagina
+        loadDarkMode();
+    </script>
+
+</body>
+</html>

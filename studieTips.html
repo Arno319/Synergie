@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studietips - UCLL</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .close-modal {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-modal:hover {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="fotos/ucllLogo.png" alt="UCLL Hogeschool Logo">
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="main-menu">
+                <a href="quiz.html">Quiz</a>
+                <a href="todoList.html">To Do List</a>
+                <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+                <a href="studieTips.html">Studie tips</a>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="page-title">
+        <h1>Studietips</h1>
+    </div>
+    
+    <main class="content">
+        <p>Succesvol studeren vraagt om de juiste strategie en aanpak. Hieronder vind je 20 praktische studietips die je kunnen helpen om efficiënter en effectiever te leren.</p>
+        
+        <div class="activities-grid" id="studietips-grid">
+            <!-- Studietips worden dynamisch gegenereerd met JavaScript -->
+        </div>
+    </main>
+    
+    <div id="tipModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-social">
+                    <p>Volg #ucll op sociale media:</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="TikTok">♫</a>
+                        <a href="#" aria-label="Instagram">I</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Opleidingen</h3>
+                <ul>
+                    <li><a href="#">Alle opleidingen</a></li>
+                    <li><a href="#">Opleidingstypes</a></li>
+                    <li><a href="#">Opleidingsvormen</a></li>
+                    <li><a href="#">Interessegebieden</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Studeren aan UCLL</h3>
+                <ul>
+                    <li><a href="#">Diensten voor studenten</a></li>
+                    <li><a href="#">Onze campussen</a></li>
+                    <li><a href="#">Infomomenten</a></li>
+                    <li><a href="#">Inschrijven</a></li>
+                    <li><a href="#">Studentenleven aan UCLL</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Snel naar</h3>
+                <ul>
+                    <li><a href="#">Bibliotheek</a></li>
+                    <li><a href="#">Vacatures</a></li>
+                    <li><a href="#">Wie-is-wie</a></li>
+                    <li><a href="#">Sponsoring</a></li>
+                    <li><a href="#">Pauze Activiteiten</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const studietips = [
+            {
+                tip: "Maak een studieplanning.",
+                description: "Een goede studieplanning helpt je om gestructureerd te werk te gaan. Verdeel je studietijd in overzichtelijke blokken, rekening houdend met je andere verplichtingen. Gebruik een agenda of digitale planner om je taken en deadlines bij te houden. Zorg voor realistische doelen en voldoende pauzes."
+            },
+            {
+                tip: "Gebruik de Pomodoro-techniek.",
+                description: "De Pomodoro-techniek is een tijdmanagementmethode waarbij je studeert in gefocuste sessies van 25 minuten, gevolgd door een korte pauze van 5 minuten. Na vier van zulke sessies neem je een langere pauze van 15-30 minuten. Dit helpt je geconcentreerd te blijven en voorkomt mentale uitputting."
+            },
+            {
+                tip: "Houd een opgeruimde studieplek.",
+                description: "Een georganiseerde en opgeruimde studieomgeving vermindert afleidingen en verhoogt je productiviteit. Zorg voor voldoende verlichting, een comfortabele stoel, en verwijder onnodige spullen van je bureau. Een opgeruimde ruimte leidt tot een opgeruimd hoofd."
+            },
+            {
+                tip: "Zorg voor voldoende slaap.",
+                description: "Slaap is cruciaal voor je leervermogen en geheugen. Probeer elke nacht 7-9 uur te slapen en een vast slaapritme aan te houden. Voorkom laat studeren of schermgebruik vlak voor het slaapgaan, omdat dit je slaapkwaliteit kan verstoren."
+            },
+            {
+                tip: "Gebruik actieve herhaling.",
+                description: "Actieve herhaling is effectiever dan passief herlezen. Probeer de leerstof in je eigen woorden samen te vatten, maak samenvattingen, gebruik geheugenkaarten of leg de stof uit aan een medestudent. Hierdoor verwerk je de informatie dieper en onthoud je meer."
+            },
+            {
+                tip: "Oefen met oude examens.",
+                description: "Oude examens zijn goudmijnen voor voorbereiding. Ze geven je inzicht in de structuur, moeilijkheidsgraad en types vragen die je kunt verwachten. Maak ze onder examenomstandigheden en bespreek nadien je antwoorden met medestudenten of docenten."
+            },
+            {
+                tip: "Leg de stof in eigen woorden uit.",
+                description: "Het kunnen uitleggen van leerstof aan anderen is een teken dat je de materie echt begrijpt. Zoek een studiegenoot of gebruik een denkbeeldige luisteraar om de concepten uit te leggen. Dit helpt je om gaten in je kennis te ontdekken en de leerstof beter te begrijpen."
+            },
+            {
+                tip: "Wissel studiemethoden af.",
+                description: "Varieer in je studiemethoden om verveling tegen te gaan en je leervermogen te optimaliseren. Combineer verschillende technieken zoals video's bekijken, aantekeningen maken, mindmaps tekenen en hardop studeren. Elk brein leert anders, dus ontdek wat voor jou werkt."
+            },
+            {
+                tip: "Zorg voor voldoende pauzes.",
+                description: "Regelmatige pauzes zijn essentieel voor je concentratie en mentale gezondheid. Sta even op, beweeg, drink water of doe een korte ontspanningsoefening. Te lang achter elkaar studeren leidt tot verminderde efficiëntie en uitputting."
+            },
+            {
+                tip: "Studie in een rustige omgeving.",
+                description: "Kies een studieplaats met minimale afleidingen. Bibliotheken, stille hoeken op de campus of een rustige ruimte thuis zijn ideaal. Zet je telefoon op stil of gebruik apps die sociale media blokkeren tijdens je studietijd."
+            },
+            {
+                tip: "Gebruik flashcards.",
+                description: "Flashcards zijn een effectieve methode voor het onthouden van feiten, definities en concepten. Je kunt ze fysiek maken of gebruik digitale apps. Bekijk ze regelmatig en test jezelf. Probeer de belangrijkste informatie op een kaart te zetten."
+            },
+            {
+                tip: "Werk in studiegroepen.",
+                description: "Samenwerken met medestudenten kan je studievoortgang versnellen. Deel kennis, discussieer over moeilijke concepten en help elkaar. Zorg wel voor een gestructureerde aanpak en blijf gefocust op de leerdoelen."
+            },
+            {
+                tip: "Beweeg regelmatig.",
+                description: "Lichaamsbeweging verbetert je cognitieve functies en geheugen. Neem regelmatig pauzes om te bewegen, ga wandelen, fiets of doe een korte work-out. Gezonde voeding en beweging dragen bij aan betere studieresultaten."
+            },
+            {
+                tip: "Drink voldoende water.",
+                description: "Hydratatie is belangrijk voor je hersenwerking. Zorg dat je genoeg water drinkt, bij voorkeur 1,5 tot 2 liter per dag. Een goed gehydrateerd brein presteert beter en helpt je gefocust te blijven tijdens het studeren."
+            },
+            {
+                tip: "Vermijd afleidingen zoals sociale media.",
+                description: "Sociale media kunnen je studietijd en concentratie ernstig verstoren. Gebruik apps die je sociale media gebruik beperken, zet meldingen uit of gebruik 'focus' modi op je apparaten. Plan specifieke tijden in om sociale media te gebruiken, buiten je studietijd."
+            },
+            {
+                tip: "Gebruik mindmaps.",
+                description: "Mindmaps zijn visuele hulpmiddelen die helpen bij het organiseren en onthouden van informatie. Begin met het centrale concept in het midden en maak vertakkingen naar gerelateerde onderwerpen. Ze helpen je verbanden te zien en de leerstof beter te begrijpen."
+            },
+            {
+                tip: "Stel concrete doelen.",
+                description: "Maak je studiedoelen specifiek, meetbaar, haalbaar, relevant en tijdgebonden (SMART). In plaats van 'Ik ga vandaag studeren', zeg 'Ik ga hoofdstuk 3 doornemen en de bijbehorende oefeningen maken voor 17:00 uur'. Kleine, haalbare doelen motiveren."
+            },
+            {
+                tip: "Luister naar rustige muziek of witte ruis.",
+                description: "Zachte achtergrondmuziek zonder tekst of witte ruis kan je concentratie verbeteren. Klassieke muziek, ambient geluiden of studeer-specifieke playlists kunnen helpen om je te focussen. Experimenteer en vind wat voor jou werkt."
+            },
+            {
+                tip: "Test jezelf regelmatig.",
+                description: "Zelftesten is een krachtige leermethode. Maak practice-toetsen, gebruik online quizzen of laat iemand anders je ondervragen. Dit helpt je zwakke punten te identificeren en zorgt voor actieve verwerking van de leerstof."
+            },
+            {
+                tip: "Blijf gemotiveerd met beloningen.",
+                description: "Beloon jezelf na het behalen van studiemijlpalen. Dit kan variëren van een lekkere koffie, een korte ontspanningsactiviteit tot iets waar je echt naar uitkijkt. Positieve bekrachtiging helpt je motivatie vast te houden en maakt studeren leuker."
+            }
+        ];
+
+        const studietipsGrid = document.getElementById('studietips-grid');
+        const tipModal = document.getElementById('tipModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const closeModal = document.querySelector('.close-modal');
+
+        studietips.forEach((studietip, index) => {
+            const tipCard = document.createElement('div');
+            tipCard.classList.add('activity-card');
+            
+            tipCard.innerHTML = `
+                </div>
+                <div class="activity-content">
+                    <h3>Studietip ${index + 1}</h3>
+                    <p>${studietip.tip}</p>
+                    <button class="btn" data-index="${index}">Lees meer</button>
+                </div>
+            `;
+
+            studietipsGrid.appendChild(tipCard);
+        });
+
+        studietipsGrid.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn')) {
+                const index = e.target.getAttribute('data-index');
+                modalTitle.textContent = `Studietip ${parseInt(index) + 1}: ${studietips[index].tip}`;
+                modalDescription.textContent = studietips[index].description;
+                tipModal.style.display = 'block';
+            }
+        });
+
+        closeModal.addEventListener('click', () => {
+            tipModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target == tipModal) {
+                tipModal.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

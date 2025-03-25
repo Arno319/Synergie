@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student To-Do Lijst</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="fotos/ucllLogo.png" alt="Logo">
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="main-menu">
+                <a href="quiz.html">Quiz</a>
+                <a href="todoList.html">To Do List</a>
+                <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+                <a href="studieTips.html">Studie tips</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-title">
+        <h1>Organiseer je taken</h1>
+    </div>
+
+    <div class="content">
+        <div class="todo-container">
+            <div class="todo-header">
+                <h2>Mijn To-Do Lijst</h2>
+                <p>Houd al je taken bij op één plek. De gegevens worden lokaal opgeslagen in je browser.</p>
+            </div>
+
+            <div class="todo-add">
+                <form id="todo-form">
+                    <div class="input-group">
+                        <input type="text" id="todo-input" placeholder="Nieuwe taak toevoegen..." required>
+                        <select id="todo-category">
+                            <option value="studie">Studie</option>
+                            <option value="persoonlijk">Persoonlijk</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="later">Later</option>
+                        </select>
+                        <button type="submit" class="btn">Toevoegen</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="todo-filters">
+                <button class="filter-btn active" data-filter="all">Alle</button>
+                <button class="filter-btn" data-filter="studie">Studie</button>
+                <button class="filter-btn" data-filter="persoonlijk">Persoonlijk</button>
+                <button class="filter-btn" data-filter="urgent">Urgent</button>
+                <button class="filter-btn" data-filter="later">Later</button>
+                <button class="filter-btn" data-filter="completed">Voltooid</button>
+            </div>
+
+            <div class="todo-stats">
+                <div class="stat-item">
+                    <span id="total-count">0</span>
+                    <span>Totaal</span>
+                </div>
+                <div class="stat-item">
+                    <span id="completed-count">0</span>
+                    <span>Voltooid</span>
+                </div>
+                <div class="stat-item">
+                    <span id="pending-count">0</span>
+                    <span>Openstaand</span>
+                </div>
+            </div>
+
+            <div class="todo-list" id="todo-list">
+                <!-- To-do items will be added here dynamically -->
+                <div class="empty-state">
+                    <p>Je hebt nog geen taken toegevoegd.</p>
+                    <p>Begin met het toevoegen van taken om ze hier te zien.</p>
+                </div>
+            </div>
+
+            <div class="todo-actions">
+                <button class="btn btn-secondary" id="clear-completed">Voltooide taken wissen</button>
+                <button class="btn btn-danger" id="clear-all">Alles wissen</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-social">
+                    <p>Volg #ucll op sociale media:</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="TikTok">♫</a>
+                        <a href="#" aria-label="Instagram">I</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Opleidingen</h3>
+                <ul>
+                    <li><a href="#">Alle opleidingen</a></li>
+                    <li><a href="#">Opleidingstypes</a></li>
+                    <li><a href="#">Opleidingsvormen</a></li>
+                    <li><a href="#">Interessegebieden</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Studeren aan UCLL</h3>
+                <ul>
+                    <li><a href="#">Diensten voor studenten</a></li>
+                    <li><a href="#">Onze campussen</a></li>
+                    <li><a href="#">Infomomenten</a></li>
+                    <li><a href="#">Inschrijven</a></li>
+                    <li><a href="#">Studentenleven aan UCLL</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Snel naar</h3>
+                <ul>
+                    <li><a href="#">Bibliotheek</a></li>
+                    <li><a href="#">Vacatures</a></li>
+                    <li><a href="#">Wie-is-wie</a></li>
+                    <li><a href="#">Sponsoring</a></li>
+                    <li><a href="#">Pauze Activiteiten</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const todoForm = document.getElementById('todo-form');
+            const todoInput = document.getElementById('todo-input');
+            const todoCategory = document.getElementById('todo-category');
+            const todoList = document.getElementById('todo-list');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const clearCompletedBtn = document.getElementById('clear-completed');
+            const clearAllBtn = document.getElementById('clear-all');
+            const totalCount = document.getElementById('total-count');
+            const completedCount = document.getElementById('completed-count');
+            const pendingCount = document.getElementById('pending-count');
+            const emptyState = document.querySelector('.empty-state');
+            
+            // Variables
+            let todos = JSON.parse(localStorage.getItem('todos')) || [];
+            let currentFilter = 'all';
+            
+            // Initial render
+            renderTodos();
+            updateStats();
+            
+            // Form submit handler
+            todoForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const todoText = todoInput.value.trim();
+                if (!todoText) return;
+                
+                const newTodo = {
+                    id: Date.now(),
+                    text: todoText,
+                    category: todoCategory.value,
+                    completed: false,
+                    createdAt: new Date().toISOString()
+                };
+                
+                todos.push(newTodo);
+                saveTodos();
+                renderTodos();
+                
+                todoInput.value = '';
+                todoInput.focus();
+            });
+            
+            // Filter click handler
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Update active filter
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    currentFilter = this.getAttribute('data-filter');
+                    renderTodos();
+                });
+            });
+            
+            // Clear completed handler
+            clearCompletedBtn.addEventListener('click', function() {
+                if (confirm('Weet je zeker dat je alle voltooide taken wilt verwijderen?')) {
+                    todos = todos.filter(todo => !todo.completed);
+                    saveTodos();
+                    renderTodos();
+                }
+            });
+            
+            // Clear all handler
+            clearAllBtn.addEventListener('click', function() {
+                if (confirm('Weet je zeker dat je ALLE taken wilt verwijderen?')) {
+                    todos = [];
+                    saveTodos();
+                    renderTodos();
+                }
+            });
+            
+            // Toggle todo completed status
+            todoList.addEventListener('click', function(e) {
+                if (e.target.classList.contains('todo-checkbox')) {
+                    const todoId = parseInt(e.target.closest('.todo-item').getAttribute('data-id'));
+                    todos = todos.map(todo => {
+                        if (todo.id === todoId) {
+                            todo.completed = !todo.completed;
+                        }
+                        return todo;
+                    });
+                    
+                    saveTodos();
+                    renderTodos();
+                }
+                
+                // Delete todo
+                if (e.target.classList.contains('todo-delete')) {
+                    const todoId = parseInt(e.target.closest('.todo-item').getAttribute('data-id'));
+                    todos = todos.filter(todo => todo.id !== todoId);
+                    
+                    saveTodos();
+                    renderTodos();
+                }
+            });
+            
+            // Edit todo
+            todoList.addEventListener('dblclick', function(e) {
+                if (e.target.classList.contains('todo-text')) {
+                    const todoItem = e.target.closest('.todo-item');
+                    const todoId = parseInt(todoItem.getAttribute('data-id'));
+                    const todo = todos.find(todo => todo.id === todoId);
+                    
+                    // Create edit input
+                    const currentText = e.target.textContent;
+                    const editInput = document.createElement('input');
+                    editInput.type = 'text';
+                    editInput.value = currentText;
+                    editInput.classList.add('todo-edit-input');
+                    
+                    // Replace text with input
+                    e.target.textContent = '';
+                    e.target.appendChild(editInput);
+                    editInput.focus();
+                    
+                    // Handle input blur
+                    editInput.addEventListener('blur', finishEditing);
+                    editInput.addEventListener('keypress', function(e) {
+                        if (e.key === 'Enter') {
+                            finishEditing.call(this);
+                        }
+                    });
+                    
+                    function finishEditing() {
+                        const newText = this.value.trim();
+                        if (newText) {
+                            todos = todos.map(t => {
+                                if (t.id === todoId) {
+                                    t.text = newText;
+                                }
+                                return t;
+                            });
+                            
+                            saveTodos();
+                        }
+                        renderTodos();
+                    }
+                }
+            });
+            
+            // Render todos based on filter
+            function renderTodos() {
+                // Clear current todos
+                while (todoList.firstChild && todoList.firstChild !== emptyState) {
+                    todoList.removeChild(todoList.firstChild);
+                }
+                
+                // Filter todos
+                let filteredTodos = todos;
+                if (currentFilter !== 'all') {
+                    filteredTodos = todos.filter(todo => {
+                        if (currentFilter === 'completed') {
+                            return todo.completed;
+                        } else {
+                            return todo.category === currentFilter;
+                        }
+                    });
+                }
+                
+                // Sort todos: completed at bottom, then by creation date (newest first)
+                filteredTodos.sort((a, b) => {
+                    if (a.completed !== b.completed) {
+                        return a.completed ? 1 : -1;
+                    }
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+                });
+                
+                // Show empty state if no todos
+                if (todos.length === 0) {
+                    emptyState.style.display = 'block';
+                } else {
+                    emptyState.style.display = 'none';
+                }
+                
+                // Create todo elements
+                filteredTodos.forEach(todo => {
+                    const todoItem = document.createElement('div');
+                    todoItem.classList.add('todo-item');
+                    todoItem.setAttribute('data-id', todo.id);
+                    todoItem.setAttribute('data-category', todo.category);
+                    
+                    if (todo.completed) {
+                        todoItem.classList.add('completed');
+                    }
+                    
+                    todoItem.innerHTML = `
+                        <div class="todo-content">
+                            <input type="checkbox" class="todo-checkbox" ${todo.completed ? 'checked' : ''}>
+                            <span class="todo-text">${todo.text}</span>
+                            <span class="todo-category-tag ${todo.category}">${todo.category}</span>
+                        </div>
+                        <div class="todo-actions">
+                            <button class="todo-delete">&times;</button>
+                        </div>
+                    `;
+                    
+                    todoList.insertBefore(todoItem, emptyState);
+                });
+                
+                updateStats();
+            }
+            
+            // Save todos to localStorage
+            function saveTodos() {
+                localStorage.setItem('todos', JSON.stringify(todos));
+            }
+            
+            // Update statistics
+            function updateStats() {
+                totalCount.textContent = todos.length;
+                completedCount.textContent = todos.filter(todo => todo.completed).length;
+                pendingCount.textContent = todos.filter(todo => !todo.completed).length;
+            }
+        });
+    </script>
+</body>
+</html>

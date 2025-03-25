@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Quiz - Even een pauze</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="fotos/ucllLogo.png" alt="UCLL Hogeschool Logo">
+            </div>
+        </div>
+        </div>
+        <nav class="main-nav">
+            <div class="main-menu">
+                <a href="quiz.html">Quiz</a>
+                <a href="todoList.html">To Do List</a>
+                <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+                <a href="studieTips.html">Studie tips</a>
+            </div>
+        </nav>
+        <button id="themeToggle" class="theme-toggle">
+            <span class="light-icon">☀️</span>
+            <span class="dark-icon">🌙</span>
+        </button>
+    </header>
+
+    <div class="page-title">
+        <h1>Even een pauze?</h1>
+    </div>
+
+    <div class="content">
+        <div class="quiz-container">
+            <div class="quiz-intro" id="quiz-intro">
+                <h2>Verfrissende Kennisquiz</h2>
+                <p>Neem even een pauze van je studie en test je algemene kennis met deze korte quiz. De perfecte manier om je gedachten te verzetten!</p>
+                <p>De quiz bestaat uit 5 willekeurige vragen en duurt ongeveer 2 minuten.</p>
+                <button class="btn" id="start-quiz">Start de Quiz</button>
+            </div>
+
+            <div id="question-section" style="display: none;">
+                <div class="timer" id="timer">00:00</div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div class="question-container active" id="question-1">
+                    <div class="question-text">Wat is de hoofdstad van Australië?</div>
+                    <ul class="options-list">
+                        <li class="option-item" data-correct="false">Sydney</li>
+                        <li class="option-item" data-correct="true">Canberra</li>
+                        <li class="option-item" data-correct="false">Melbourne</li>
+                        <li class="option-item" data-correct="false">Perth</li>
+                    </ul>
+                </div>
+
+                <div class="question-container" id="question-2">
+                    <div class="question-text">Welk element heeft het symbool 'O' in het periodiek systeem?</div>
+                    <ul class="options-list">
+                        <li class="option-item" data-correct="false">Osmium</li>
+                        <li class="option-item" data-correct="false">Goud (Aurum)</li>
+                        <li class="option-item" data-correct="true">Zuurstof (Oxygen)</li>
+                        <li class="option-item" data-correct="false">Zilver (Argentum)</li>
+                    </ul>
+                </div>
+
+                <div class="question-container" id="question-3">
+                    <div class="question-text">Wie schreef het boek "Harry Potter en de Steen der Wijzen"?</div>
+                    <ul class="options-list">
+                        <li class="option-item" data-correct="true">J.K. Rowling</li>
+                        <li class="option-item" data-correct="false">George R.R. Martin</li>
+                        <li class="option-item" data-correct="false">Stephen King</li>
+                        <li class="option-item" data-correct="false">Roald Dahl</li>
+                    </ul>
+                </div>
+
+                <div class="question-container" id="question-4">
+                    <div class="question-text">Wat is de kleinste planeet in ons zonnestelsel?</div>
+                    <ul class="options-list">
+                        <li class="option-item" data-correct="false">Mars</li>
+                        <li class="option-item" data-correct="false">Venus</li>
+                        <li class="option-item" data-correct="true">Mercurius</li>
+                        <li class="option-item" data-correct="false">Pluto (geen planeet meer)</li>
+                    </ul>
+                </div>
+
+                <div class="question-container" id="question-5">
+                    <div class="question-text">Welke taal wordt het meest gesproken ter wereld?</div>
+                    <ul class="options-list">
+                        <li class="option-item" data-correct="false">Engels</li>
+                        <li class="option-item" data-correct="false">Spaans</li>
+                        <li class="option-item" data-correct="true">Mandarijn Chinees</li>
+                        <li class="option-item" data-correct="false">Hindi</li>
+                    </ul>
+                </div>
+
+                <div class="quiz-controls">
+                    <button class="btn btn-secondary" id="prev-btn" disabled>Vorige</button>
+                    <button class="btn" id="next-btn" disabled>Volgende</button>
+                </div>
+            </div>
+
+            <div class="results-container" id="results-container">
+                <h2>Quiz Resultaten</h2>
+                <div class="score" id="score-display">3/5 correct</div>
+                <div class="feedback" id="feedback-text">Goed gedaan! Je hebt een stevige algemene kennis.</div>
+                <div class="quiz-controls">
+                    <button class="btn" id="restart-quiz">Opnieuw Proberen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-social">
+                    <p>Volg #ucll op sociale media:</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="TikTok">♫</a>
+                        <a href="#" aria-label="Instagram">I</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Opleidingen</h3>
+                <ul>
+                    <li><a href="#">Alle opleidingen</a></li>
+                    <li><a href="#">Opleidingstypes</a></li>
+                    <li><a href="#">Opleidingsvormen</a></li>
+                    <li><a href="#">Interessegebieden</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Studeren aan UCLL</h3>
+                <ul>
+                    <li><a href="#">Diensten voor studenten</a></li>
+                    <li><a href="#">Onze campussen</a></li>
+                    <li><a href="#">Infomomenten</a></li>
+                    <li><a href="#">Inschrijven</a></li>
+                    <li><a href="#">Studentenleven aan UCLL</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Snel naar</h3>
+                <ul>
+                    <li><a href="#">Bibliotheek</a></li>
+                    <li><a href="#">Vacatures</a></li>
+                    <li><a href="#">Wie-is-wie</a></li>
+                    <li><a href="#">Sponsoring</a></li>
+                    <li><a href="#">Pauze Activiteiten</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function initTheme() {
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.body.className = theme;
+            updateThemeIcon(theme);
+        }
+
+        function updateThemeIcon(theme) {
+            const toggle = document.getElementById('themeToggle');
+            toggle.querySelector('.light-icon').style.display = theme === 'dark' ? 'inline' : 'none';
+            toggle.querySelector('.dark-icon').style.display = theme === 'dark' ? 'none' : 'inline';
+        }
+
+        document.getElementById('themeToggle').addEventListener('click', () => {
+            const currentTheme = document.body.className;
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            document.body.className = newTheme;
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        initTheme();
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quiz variables
+            let currentQuestion = 1;
+            const totalQuestions = 5;
+            let score = 0;
+            let selectedOption = null;
+            let timerInterval;
+            let seconds = 0;
+            
+            // Elements
+            const startButton = document.getElementById('start-quiz');
+            const quizIntro = document.getElementById('quiz-intro');
+            const questionSection = document.getElementById('question-section');
+            const nextButton = document.getElementById('next-btn');
+            const prevButton = document.getElementById('prev-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const timerElement = document.getElementById('timer');
+            const resultsContainer = document.getElementById('results-container');
+            const scoreDisplay = document.getElementById('score-display');
+            const feedbackText = document.getElementById('feedback-text');
+            const restartButton = document.getElementById('restart-quiz');
+            
+            // Start quiz
+            startButton.addEventListener('click', function() {
+                quizIntro.style.display = 'none';
+                questionSection.style.display = 'block';
+                updateProgressBar();
+                startTimer();
+            });
+            
+            // Option selection
+            const options = document.querySelectorAll('.option-item');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    if (this.classList.contains('selected') || 
+                        this.classList.contains('correct') || 
+                        this.classList.contains('incorrect')) {
+                        return;
+                    }
+                    
+                    // Clear previous selection in current question
+                    const currentQuestionElement = document.getElementById(`question-${currentQuestion}`);
+                    const currentOptions = currentQuestionElement.querySelectorAll('.option-item');
+                    currentOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Mark as selected
+                    this.classList.add('selected');
+                    selectedOption = this;
+                    
+                    // Enable next button
+                    nextButton.disabled = false;
+                });
+            });
+            
+            // Next question
+            nextButton.addEventListener('click', function() {
+                if (currentQuestion === totalQuestions) {
+                    // Show results
+                    endQuiz();
+                    return;
+                }
+                
+                // Check if answer is correct before moving to next question
+                if (selectedOption) {
+                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                    if (isCorrect) {
+                        score++;
+                    }
+                }
+                
+                // Move to next question
+                document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                currentQuestion++;
+                document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                
+                // Update UI
+                selectedOption = null;
+                nextButton.disabled = true;
+                prevButton.disabled = false;
+                updateProgressBar();
+            });
+            
+            // Previous question
+            prevButton.addEventListener('click', function() {
+                if (currentQuestion === 1) {
+                    return;
+                }
+                
+                // Move to previous question
+                document.getElementById(`question-${currentQuestion}`).classList.remove('active');
+                currentQuestion--;
+                document.getElementById(`question-${currentQuestion}`).classList.add('active');
+                
+                // Update UI
+                nextButton.disabled = false;
+                if (currentQuestion === 1) {
+                    prevButton.disabled = true;
+                }
+                updateProgressBar();
+            });
+            
+            // Update progress bar
+            function updateProgressBar() {
+                const progress = ((currentQuestion - 1) / totalQuestions) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+            
+            // Timer function
+            function startTimer() {
+                timerInterval = setInterval(function() {
+                    seconds++;
+                    const minutes = Math.floor(seconds / 60);
+                    const remainingSeconds = seconds % 60;
+                    timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+                }, 1000);
+            }
+            
+            // End quiz
+            function endQuiz() {
+                // Stop timer
+                clearInterval(timerInterval);
+                
+                // Check last question
+                if (selectedOption) {
+                    const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+                    if (isCorrect) {
+                        score++;
+                    }
+                }
+                
+                // Hide questions, show results
+                questionSection.style.display = 'none';
+                resultsContainer.style.display = 'block';
+                
+                // Update score and feedback
+                scoreDisplay.textContent = `${score}/${totalQuestions} correct`;
+                
+                // Generate feedback based on score
+                if (score === totalQuestions) {
+                    feedbackText.textContent = 'Perfect! Je bent een echte kenner!';
+                } else if (score >= totalQuestions * 0.8) {
+                    feedbackText.textContent = 'Uitstekend! Je hebt een indrukwekkende algemene kennis.';
+                } else if (score >= totalQuestions * 0.6) {
+                    feedbackText.textContent = 'Goed gedaan! Je hebt een stevige algemene kennis.';
+                } else if (score >= totalQuestions * 0.4) {
+                    feedbackText.textContent = 'Niet slecht! Er is nog ruimte voor verbetering.';
+                } else {
+                    feedbackText.textContent = 'Blijf oefenen! Deze onderwerpen vergen wat extra aandacht.';
+                }
+            }
+            
+            // Restart quiz
+            restartButton.addEventListener('click', function() {
+                // Reset variables
+                currentQuestion = 1;
+                score = 0;
+                seconds = 0;
+                selectedOption = null;
+                
+                // Reset UI
+                resultsContainer.style.display = 'none';
+                quizIntro.style.display = 'block';
+                
+                // Reset questions
+                document.querySelectorAll('.question-container').forEach(q => q.classList.remove('active'));
+                document.getElementById('question-1').classList.add('active');
+                
+                // Reset options
+                options.forEach(option => {
+                    option.classList.remove('selected', 'correct', 'incorrect');
+                });
+                
+                // Reset buttons
+                nextButton.disabled = true;
+                prevButton.disabled = true;
+                
+                // Reset timer
+                timerElement.textContent = '00:00';
+                
+                // Reset progress bar
+                progressBar.style.width = '0%';
+            });
+        });
+    </script>
+</body>
+</html>

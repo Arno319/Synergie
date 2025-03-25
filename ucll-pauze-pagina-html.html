@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pauze Pagina - UCLL</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-nav">
+            <div class="logo">
+                <img src="fotos/ucllLogo.png" alt="UCLL Hogeschool Logo">
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="main-menu">
+                <a href="quiz.html">Quiz</a>
+                <a href="todoList.html">To Do List</a>
+                <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+                <a href="studieTips.html">Studie tips</a>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="page-title">
+        <h1>Pauze Activiteiten</h1>
+    </div>
+    
+    <main class="content">
+        <p>Bij UCLL vinden we het belangrijk dat studenten regelmatig pauze nemen en zich kunnen ontspannen. Hieronder vind je verschillende ontspanningsoefeningen die je tijdens je pauzes kunt doen om je concentratie en welzijn te verbeteren.</p>
+        
+        <!-- Timer Modal -->
+        <div id="timerModal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2 id="activity-title">Pauze Timer</h2>
+                <div class="timer-container">
+                    <div class="timer" id="timer">15:00</div>
+                    <div class="timer-controls">
+                        <button id="startPauseBtn" class="btn">Start</button>
+                        <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+                <div id="timer-complete" class="timer-complete">
+                    <h3>Pauze voltooid!</h3>
+                    <div id="quote" class="quote"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="activities-grid">
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/ademhaling.avif" alt="Ademhalingsoefening">
+                </div>
+                <div class="activity-content">
+                    <h3>Ademhalingsoefening</h3>
+                    <p>Een eenvoudige maar effectieve techniek om stress te verminderen en je te helpen focussen. Adem 4 seconden in, houd 4 seconden vast, adem 4 seconden uit en wacht 4 seconden voor je opnieuw inademt.</p>
+                    <button class="btn start-exercise" data-activity="Ademhalingsoefening">Start oefening</button>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/meditatie.jpg" alt="Korte meditatie">
+                </div>
+                <div class="activity-content">
+                    <h3>Korte meditatie</h3>
+                    <p>Een 5-minuten geleide meditatie om je geest tot rust te brengen. Focus op het huidige moment en laat afleidende gedachten los. Perfect voor een korte pauze tussen colleges.</p>
+                    <button class="btn start-exercise" data-activity="Korte meditatie">Start oefening</button>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/Stretching.jpg" alt="Stretching">
+                </div>
+                <div class="activity-content">
+                    <h3>Stretching</h3>
+                    <p>Een reeks eenvoudige stretchoefeningen die je achter je bureau kunt doen. Ontspan je spieren, verminder spanning en verbeter je bloedcirculatie in slechts enkele minuten.</p>
+                    <button class="btn start-exercise" data-activity="Stretching">Start oefening</button>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/Mindfulness.png" alt="Mindfulness oefening">
+                </div>
+                <div class="activity-content">
+                    <h3>Mindfulness oefening</h3>
+                    <p>Een korte mindfulness oefening die je helpt om volledig aanwezig te zijn in het moment. Richt je aandacht op je zintuigen en neem waar wat er om je heen gebeurt zonder te oordelen.</p>
+                    <button class="btn start-exercise" data-activity="Mindfulness oefening">Start oefening</button>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/Oogontspanning.jpg" alt="Oogontspanning">
+                </div>
+                <div class="activity-content">
+                    <h3>Oogontspanning</h3>
+                    <p>Verminder vermoeidheid en spanning in je ogen door deze eenvoudige oefeningen. Ideaal als je lang achter een scherm hebt gezeten en last hebt van vermoeide ogen.</p>
+                    <button class="btn start-exercise" data-activity="Oogontspanning">Start oefening</button>
+                </div>
+            </div>
+            
+            <div class="activity-card">
+                <div class="activity-img">
+                    <img src="fotos/Rustgevendevisualisatie.jpg" alt="Rustgevende visualisatie">
+                </div>
+                <div class="activity-content">
+                    <h3>Rustgevende visualisatie</h3>
+                    <p>Sluit je ogen en laat je meenemen naar een rustige, ontspannende omgeving. Deze oefening helpt om stress te verminderen en je geest te kalmeren voordat je weer aan het werk gaat.</p>
+                    <button class="btn start-exercise" data-activity="Rustgevende visualisatie">Start oefening</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="footer-social">
+                    <p>Volg #ucll op sociale media:</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="TikTok">♫</a>
+                        <a href="#" aria-label="Instagram">I</a>
+                        <a href="#" aria-label="YouTube">▶</a>
+                        <a href="#" aria-label="Twitter">X</a>
+                        <a href="#" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Opleidingen</h3>
+                <ul>
+                    <li><a href="#">Alle opleidingen</a></li>
+                    <li><a href="#">Opleidingstypes</a></li>
+                    <li><a href="#">Opleidingsvormen</a></li>
+                    <li><a href="#">Interessegebieden</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Studeren aan UCLL</h3>
+                <ul>
+                    <li><a href="#">Diensten voor studenten</a></li>
+                    <li><a href="#">Onze campussen</a></li>
+                    <li><a href="#">Infomomenten</a></li>
+                    <li><a href="#">Inschrijven</a></li>
+                    <li><a href="#">Studentenleven aan UCLL</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-links">
+                <h3>Snel naar</h3>
+                <ul>
+                    <li><a href="#">Bibliotheek</a></li>
+                    <li><a href="#">Vacatures</a></li>
+                    <li><a href="#">Wie-is-wie</a></li>
+                    <li><a href="#">Sponsoring</a></li>
+                    <li><a href="#">Pauze Activiteiten</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="timer-script.js"></script>
+</body>
+</html>

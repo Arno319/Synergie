@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pauze Pagina - UCLL</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Voeg Font Awesome toe -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-nav">
+        <div class="logo">
+          <img src="fotos/logo.svg" alt="StudentBuddy Logo" />
+        </div>
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <!-- User profile section with coins -->
+        <div class="user-profile">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <span class="user-name">Gebruiker</span>
+          <div class="coin-container">
+            <span class="coin-icon">🪙</span>
+            <span id="coin-display">0</span>
+          </div>
+          <button id="logout-button" title="Uitloggen">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+
+        <!-- Login link - will be shown when logged out -->
+        <div class="login-link">
+          <a href="login.html">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Inloggen</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <div class="main-menu">
+          <a href="index.html">Home</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="todoList.html">To Do List</a>
+          <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+          <a href="studieTips.html">Studie tips</a>
+          <a href="games.html">Spellen</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-title">
+      <h1>Pauze Activiteiten</h1>
+    </div>
+
+    <main class="content">
+      <p>
+        Bij UCLL vinden we het belangrijk dat studenten regelmatig pauze nemen
+        en zich kunnen ontspannen. Hieronder vind je verschillende
+        ontspanningsoefeningen die je tijdens je pauzes kunt doen om je
+        concentratie en welzijn te verbeteren.
+      </p>
+
+      <!-- Timer Modal -->
+      <div id="timerModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn">&times;</span>
+          <h2 id="activity-title">Pauze Timer</h2>
+
+          <!-- Timer moved to the top of modal content -->
+          <div class="timer" id="timer">15:00</div>
+
+          <div class="timer-container">
+            <div class="timer-controls">
+              <button id="startPauseBtn" class="btn">Start</button>
+              <button id="resetBtn" class="btn btn-secondary">Reset</button>
+            </div>
+          </div>
+
+          <!-- Activity Instructions Section -->
+          <div id="activity-instructions" class="activity-instructions">
+            <h3>Instructies:</h3>
+            <div id="instruction-content"></div>
+          </div>
+
+          <div id="timer-complete" class="timer-complete">
+            <h3>Pauze voltooid!</h3>
+            <div id="quote" class="quote"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="activities-grid">
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="fotos/ademhaling.avif" alt="Ademhalingsoefening" />
+          </div>
+          <div class="activity-content">
+            <h3>Ademhalingsoefening</h3>
+            <p>
+              Een eenvoudige maar effectieve techniek om stress te verminderen
+              en je te helpen focussen. Adem 4 seconden in, houd 4 seconden
+              vast, adem 4 seconden uit en wacht 4 seconden voor je opnieuw
+              inademt.
+            </p>
+            <button
+              class="btn start-exercise"
+              data-activity="Ademhalingsoefening"
+            >
+              Start oefening
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="fotos/meditatie.jpg" alt="Korte meditatie" />
+          </div>
+          <div class="activity-content">
+            <h3>Korte meditatie</h3>
+            <p>
+              Een 5-minuten geleide meditatie om je geest tot rust te brengen.
+              Focus op het huidige moment en laat afleidende gedachten los.
+              Perfect voor een korte pauze tussen colleges.
+            </p>
+            <button class="btn start-exercise" data-activity="Korte meditatie">
+              Start oefening
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="fotos/Stretching.jpg" alt="Stretching" />
+          </div>
+          <div class="activity-content">
+            <h3>Stretching</h3>
+            <p>
+              Een reeks eenvoudige stretchoefeningen die je achter je bureau
+              kunt doen. Ontspan je spieren, verminder spanning en verbeter je
+              bloedcirculatie in slechts enkele minuten.
+            </p>
+            <button class="btn start-exercise" data-activity="Stretching">
+              Start oefening
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="fotos/Mindfulness.png" alt="Mindfulness oefening" />
+          </div>
+          <div class="activity-content">
+            <h3>Mindfulness oefening</h3>
+            <p>
+              Een korte mindfulness oefening die je helpt om volledig aanwezig
+              te zijn in het moment. Richt je aandacht op je zintuigen en neem
+              waar wat er om je heen gebeurt zonder te oordelen.
+            </p>
+            <button
+              class="btn start-exercise"
+              data-activity="Mindfulness oefening"
+            >
+              Start oefening
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img src="fotos/Oogontspanning.jpg" alt="Oogontspanning" />
+          </div>
+          <div class="activity-content">
+            <h3>Oogontspanning</h3>
+            <p>
+              Verminder vermoeidheid en spanning in je ogen door deze eenvoudige
+              oefeningen. Ideaal als je lang achter een scherm hebt gezeten en
+              last hebt van vermoeide ogen.
+            </p>
+            <button class="btn start-exercise" data-activity="Oogontspanning">
+              Start oefening
+            </button>
+          </div>
+        </div>
+
+        <div class="activity-card">
+          <div class="activity-img">
+            <img
+              src="fotos/Rustgevendevisualisatie.jpg"
+              alt="Rustgevende visualisatie"
+            />
+          </div>
+          <div class="activity-content">
+            <h3>Rustgevende visualisatie</h3>
+            <p>
+              Sluit je ogen en laat je meenemen naar een rustige, ontspannende
+              omgeving. Deze oefening helpt om stress te verminderen en je geest
+              te kalmeren voordat je weer aan het werk gaat.
+            </p>
+            <button
+              class="btn start-exercise"
+              data-activity="Rustgevende visualisatie"
+            >
+              Start oefening
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-social">
+            <p>Volg #ucll op sociale media:</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="TikTok">♫</a>
+              <a href="#" aria-label="Instagram">I</a>
+              <a href="#" aria-label="YouTube">▶</a>
+              <a href="#" aria-label="Twitter">X</a>
+              <a href="#" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Opleidingen</h3>
+          <ul>
+            <li><a href="#">Alle opleidingen</a></li>
+            <li><a href="#">Opleidingstypes</a></li>
+            <li><a href="#">Opleidingsvormen</a></li>
+            <li><a href="#">Interessegebieden</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Studeren aan UCLL</h3>
+          <ul>
+            <li><a href="#">Diensten voor studenten</a></li>
+            <li><a href="#">Onze campussen</a></li>
+            <li><a href="#">Infomomenten</a></li>
+            <li><a href="#">Inschrijven</a></li>
+            <li><a href="#">Studentenleven aan UCLL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Snel naar</h3>
+          <ul>
+            <li><a href="#">Bibliotheek</a></li>
+            <li><a href="#">Vacatures</a></li>
+            <li><a href="#">Wie-is-wie</a></li>
+            <li><a href="#">Sponsoring</a></li>
+            <li><a href="#">Pauze Activiteiten</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="timer-script.js"></script>
+    <script src="language-switcher.js"></script>
+    <script src="user-auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const mainMenu = document.querySelector(".main-menu");
+        const modal = document.getElementById("timerModal");
+        const closeBtn = document.querySelector(".close-btn");
+        const activityTitle = document.getElementById("activity-title");
+        const instructionContent = document.getElementById(
+          "instruction-content"
+        );
+        const startExerciseBtns = document.querySelectorAll(".start-exercise");
+
+        // Activity instructions data
+        const activityInstructions = {
+          Ademhalingsoefening: `
+            <ol>
+              <li>Ga comfortabel zitten met een rechte rug.</li>
+              <li>Adem 4 seconden diep in door je neus, voel hoe je buik uitzet.</li>
+              <li>Houd je adem 4 seconden vast.</li>
+              <li>Adem 4 seconden langzaam uit door je mond.</li>
+              <li>Wacht 4 seconden voordat je opnieuw inademt.</li>
+              <li>Herhaal deze cyclus gedurende de timer.</li>
+              <li>Focus op je ademhaling en probeer andere gedachten los te laten.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert stress, verlaagt hartslag en bloeddruk, verbetert concentratie.</p>
+          `,
+          "Korte meditatie": `
+            <ol>
+              <li>Zoek een rustige plek waar je niet gestoord wordt.</li>
+              <li>Ga comfortabel zitten of liggen.</li>
+              <li>Sluit je ogen en begin met drie diepe ademhalingen.</li>
+              <li>Richt je aandacht op je ademhaling, volg elke inademing en uitademing.</li>
+              <li>Als je merkt dat je gedachten afdwalen, breng je aandacht rustig terug naar je ademhaling.</li>
+              <li>Scan langzaam je lichaam van top tot teen, let op eventuele spanningen.</li>
+              <li>Laat met elke uitademing spanningen los.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert stress, verhoogt zelfbewustzijn, verbetert concentratie.</p>
+          `,
+          Stretching: `
+            <ol>
+              <li><strong>Nekrek:</strong> Kantel je hoofd langzaam naar rechts, houd 10 seconden vast. Herhaal links.</li>
+              <li><strong>Schouders:</strong> Rol je schouders 10x voorwaarts en 10x achterwaarts.</li>
+              <li><strong>Polsen:</strong> Draai je polsen 10x met de klok mee en 10x tegen de klok in.</li>
+              <li><strong>Rugstrek:</strong> Strek je armen boven je hoofd en reik zo hoog mogelijk, 10 seconden.</li>
+              <li><strong>Zijstrek:</strong> Reik met je rechterarm over je hoofd naar links, 10 seconden. Herhaal andere kant.</li>
+              <li><strong>Enkels:</strong> Draai elke enkel 10x met de klok mee en 10x tegen de klok in.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert spierspanning, verbetert bloedsomloop, verhoogt energie.</p>
+          `,
+          "Mindfulness oefening": `
+            <ol>
+              <li>Ga comfortabel zitten en sluit je ogen.</li>
+              <li>Richt je aandacht volledig op het huidige moment.</li>
+              <li>Neem bewust waar wat je hoort, ruikt en voelt zonder te oordelen.</li>
+              <li>Merk op wanneer je gedachten afdwalen en breng je aandacht rustig terug.</li>
+              <li>Observeer je gedachten en gevoelens als een buitenstaander.</li>
+              <li>Probeer 5 dingen te identificeren die je kunt zien, 4 die je kunt voelen, 3 die je kunt horen, 2 die je kunt ruiken en 1 die je kunt proeven.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert stress, verbetert emotionele regulatie, verhoogt zelfbewustzijn.</p>
+          `,
+          Oogontspanning: `
+            <ol>
+              <li>Wrijf je handen tegen elkaar tot ze warm worden.</li>
+              <li>Plaats je warme handpalmen licht over je gesloten ogen (zonder druk), 20 seconden.</li>
+              <li>Kijk ver weg door een raam gedurende 20 seconden.</li>
+              <li>Focus dan op iets dichtbij (30-40 cm) gedurende 20 seconden.</li>
+              <li>Herhaal deze wisseling van ver naar dichtbij 5 keer.</li>
+              <li>Rol je ogen langzaam in een cirkel, 5x met de klok mee en 5x tegen de klok in.</li>
+              <li>Knijp je ogen stevig dicht en open ze dan wijd, herhaal 10x.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert oogvermoeidheid, verbetert focus, voorkomt droge ogen.</p>
+          `,
+          "Rustgevende visualisatie": `
+            <ol>
+              <li>Ga comfortabel zitten of liggen en sluit je ogen.</li>
+              <li>Adem diep en rustig.</li>
+              <li>Stel je een rustige, vredige plek voor waar je je veilig en ontspannen voelt.</li>
+              <li>Dit kan een strand, bos, berg of een andere plek zijn die voor jou kalmerend werkt.</li>
+              <li>Gebruik al je zintuigen: wat zie je, hoor je, ruik je, voel je en proef je op deze plek?</li>
+              <li>Blijf hier minstens 5 minuten en laat alle spanningen los.</li>
+              <li>Als je gedachten afdwalen, breng ze rustig terug naar je veilige plek.</li>
+            </ol>
+            <p><strong>Voordelen:</strong> Vermindert angst, verbetert stemming, bevordert creatief denken.</p>
+          `,
+        };
+
+        menuToggle.addEventListener("click", function () {
+          mainMenu.classList.toggle("active");
+          menuToggle.classList.toggle("open");
+        });
+
+        // Open modal with appropriate activity instructions
+        startExerciseBtns.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const activityName = this.getAttribute("data-activity");
+
+            // Position the modal much higher in the viewport
+            const modalContent = modal.querySelector(".modal-content");
+            modalContent.style.marginTop = "2%"; // Force it to be even higher
+
+            // Additional position adjustment
+            modalContent.style.transform = "translateY(-30px)"; // Move it up by an additional 30px
+
+            modal.style.display = "block";
+            activityTitle.textContent = activityName;
+
+            // Set instruction content based on activity
+            instructionContent.innerHTML =
+              activityInstructions[activityName] ||
+              "<p>Geen specifieke instructies beschikbaar voor deze activiteit.</p>";
+
+            // Reset timer state if needed
+            document.getElementById("timer-complete").style.display = "none";
+
+            // Force scroll to very top to ensure visibility
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          });
+        });
+
+        // Close modal
+        closeBtn.addEventListener("click", function () {
+          modal.style.display = "none";
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener("click", function (event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        });
+
+        // Vertalingen voor de pauze pagina
+        const translations = {
+          nl: {
+            pageTitle: "Pauze Activiteiten",
+            pageIntro:
+              "Bij UCLL vinden we het belangrijk dat studenten regelmatig pauze nemen en zich kunnen ontspannen. Hieronder vind je verschillende ontspanningsoefeningen die je tijdens je pauzes kunt doen om je concentratie en welzijn te verbeteren.",
+            timerTitle: "Pauze Timer",
+            instructionsTitle: "Instructies:",
+            completeTitle: "Pauze voltooid!",
+            startBtn: "Start",
+            pauseBtn: "Pauze",
+            resetBtn: "Reset",
+            startExerciseBtn: "Start oefening",
+
+            // Activiteiten titels
+            activities: {
+              Ademhalingsoefening: "Ademhalingsoefening",
+              "Korte meditatie": "Korte meditatie",
+              Stretching: "Stretching",
+              "Mindfulness oefening": "Mindfulness oefening",
+              Oogontspanning: "Oogontspanning",
+              "Rustgevende visualisatie": "Rustgevende visualisatie",
+            },
+
+            // Activiteiten beschrijvingen
+            descriptions: {
+              Ademhalingsoefening:
+                "Een eenvoudige maar effectieve techniek om stress te verminderen en je te helpen focussen. Adem 4 seconden in, houd 4 seconden vast, adem 4 seconden uit en wacht 4 seconden voor je opnieuw inademt.",
+              "Korte meditatie":
+                "Een 5-minuten geleide meditatie om je geest tot rust te brengen. Focus op het huidige moment en laat afleidende gedachten los. Perfect voor een korte pauze tussen colleges.",
+              Stretching:
+                "Een reeks eenvoudige stretchoefeningen die je achter je bureau kunt doen. Ontspan je spieren, verminder spanning en verbeter je bloedcirculatie in slechts enkele minuten.",
+              "Mindfulness oefening":
+                "Een korte mindfulness oefening die je helpt om volledig aanwezig te zijn in het moment. Richt je aandacht op je zintuigen en neem waar wat er om je heen gebeurt zonder te oordelen.",
+              Oogontspanning:
+                "Verminder vermoeidheid en spanning in je ogen door deze eenvoudige oefeningen. Ideaal als je lang achter een scherm hebt gezeten en last hebt van vermoeide ogen.",
+              "Rustgevende visualisatie":
+                "Sluit je ogen en laat je meenemen naar een rustige, ontspannende omgeving. Deze oefening helpt om stress te verminderen en je geest te kalmeren voordat je weer aan het werk gaat.",
+            },
+          },
+          en: {
+            pageTitle: "Break Activities",
+            pageIntro:
+              "At UCLL, we find it important that students take regular breaks and are able to relax. Below you'll find various relaxation exercises you can do during your breaks to improve your concentration and well-being.",
+            timerTitle: "Break Timer",
+            instructionsTitle: "Instructions:",
+            completeTitle: "Break completed!",
+            startBtn: "Start",
+            pauseBtn: "Pause",
+            resetBtn: "Reset",
+            startExerciseBtn: "Start exercise",
+
+            // Activity titles
+            activities: {
+              Ademhalingsoefening: "Breathing Exercise",
+              "Korte meditatie": "Short Meditation",
+              Stretching: "Stretching",
+              "Mindfulness oefening": "Mindfulness Exercise",
+              Oogontspanning: "Eye Relaxation",
+              "Rustgevende visualisatie": "Calming Visualization",
+            },
+
+            // Activity descriptions
+            descriptions: {
+              Ademhalingsoefening:
+                "A simple but effective technique to reduce stress and help you focus. Breathe in for 4 seconds, hold for 4 seconds, breathe out for 4 seconds, and wait 4 seconds before breathing in again.",
+              "Korte meditatie":
+                "A 5-minute guided meditation to calm your mind. Focus on the present moment and let go of distracting thoughts. Perfect for a short break between classes.",
+              Stretching:
+                "A series of simple stretching exercises you can do at your desk. Relax your muscles, reduce tension and improve your blood circulation in just a few minutes.",
+              "Mindfulness oefening":
+                "A short mindfulness exercise that helps you to be fully present in the moment. Focus your attention on your senses and observe what's happening around you without judgment.",
+              Oogontspanning:
+                "Reduce fatigue and tension in your eyes with these simple exercises. Ideal if you've been sitting behind a screen for a long time and are experiencing tired eyes.",
+              "Rustgevende visualisatie":
+                "Close your eyes and let yourself be taken to a calm, relaxing environment. This exercise helps reduce stress and calm your mind before getting back to work.",
+            },
+          },
+        };
+
+        // Functie om de pagina-inhoud bij te werken op basis van de geselecteerde taal
+        function updatePageLanguage(lang, translations) {
+          // Update paginatitel
+          document.querySelector(".page-title h1").textContent =
+            translations[lang].pageTitle;
+          document.querySelector("main.content > p").textContent =
+            translations[lang].pageIntro;
+
+          // Update timer modal
+          document.getElementById("activity-title").textContent =
+            translations[lang].timerTitle;
+          document.querySelector("#activity-instructions h3").textContent =
+            translations[lang].instructionsTitle;
+          document.querySelector("#timer-complete h3").textContent =
+            translations[lang].completeTitle;
+
+          // Update buttons
+          const startPauseBtn = document.getElementById("startPauseBtn");
+          if (
+            startPauseBtn.textContent === "Start" ||
+            startPauseBtn.textContent === "Start"
+          ) {
+            startPauseBtn.textContent = translations[lang].startBtn;
+          } else {
+            startPauseBtn.textContent = translations[lang].pauseBtn;
+          }
+
+          document.getElementById("resetBtn").textContent =
+            translations[lang].resetBtn;
+
+          // Update activity cards
+          document.querySelectorAll(".activity-card").forEach((card) => {
+            const titleEl = card.querySelector("h3");
+            const activityName = titleEl.textContent;
+
+            // Update title
+            if (translations[lang].activities[activityName]) {
+              titleEl.textContent = translations[lang].activities[activityName];
+            }
+
+            // Update description
+            const descEl = card.querySelector("p");
+            if (translations[lang].descriptions[activityName]) {
+              descEl.textContent =
+                translations[lang].descriptions[activityName];
+            }
+
+            // Update button
+            const btnEl = card.querySelector(".start-exercise");
+            btnEl.textContent = translations[lang].startExerciseBtn;
+
+            // Store the original Dutch name as data attribute for the instructions lookup
+            if (lang === "en") {
+              btnEl.setAttribute("data-original", activityName);
+            }
+          });
+        }
+
+        // Initialiseer de taalwisselaar
+        const currentLang = initializeLanguageSwitcher(
+          translations,
+          updatePageLanguage
+        );
+
+        // When timer completes, show the completion section and award coins
+        function timerComplete() {
+          document.getElementById("timer-complete").style.display = "block";
+          const quoteElement = document.getElementById("quote");
+          const quotes = [
+            "Een korte pauze kan een grote impact hebben op je productiviteit.",
+            "Neem de tijd om je hoofd leeg te maken, zodat je daarna meer kunt presteren.",
+            "Een verfriste geest is een productieve geest.",
+            "Goed gedaan! Je hebt een waardevolle investering gedaan in je mentale gezondheid.",
+            "Regelmatige pauzes maken je studeren effectiever.",
+            "Je brein heeft die pauze echt nodig om goed te kunnen functioneren.",
+            "Ontspanning is een essentieel onderdeel van effectief studeren.",
+          ];
+          quoteElement.textContent =
+            quotes[Math.floor(Math.random() * quotes.length)];
+
+          // Award coins for completing a break activity
+          const activityTitle =
+            document.getElementById("activity-title").textContent;
+          const activityId =
+            "break_completed_" +
+            activityTitle.replace(/\s/g, "_").toLowerCase() +
+            "_" +
+            Date.now();
+
+          if (typeof awardCoins === "function") {
+            if (awardCoins(activityId, 1)) {
+              // Show coin notification
+              if (typeof showCoinNotification === "function") {
+                showCoinNotification(1);
+              }
+            }
+          }
+        }
+
+        // Modify timer script to call timerComplete when timer ends
+        document
+          .getElementById("startPauseBtn")
+          .addEventListener("click", function () {
+            if (!isTimerRunning) {
+              startTimer();
+            } else {
+              pauseTimer();
+            }
+          });
+
+        let timerInterval;
+        let timeLeft = 15 * 60; // 15 minutes in seconds
+        let isTimerRunning = false;
+
+        function startTimer() {
+          isTimerRunning = true;
+          document.getElementById("startPauseBtn").textContent =
+            currentLang === "nl" ? "Pauze" : "Pause";
+          timerInterval = setInterval(function () {
+            if (timeLeft > 0) {
+              timeLeft--;
+              updateTimerDisplay();
+            } else {
+              clearInterval(timerInterval);
+              isTimerRunning = false;
+              document.getElementById("startPauseBtn").textContent =
+                currentLang === "nl" ? "Start" : "Start";
+              timerComplete(); // Call the timerComplete function when timer ends
+            }
+          }, 1000);
+        }
+
+        function pauseTimer() {
+          isTimerRunning = false;
+          document.getElementById("startPauseBtn").textContent =
+            currentLang === "nl" ? "Start" : "Start";
+          clearInterval(timerInterval);
+        }
+
+        function updateTimerDisplay() {
+          const minutes = Math.floor(timeLeft / 60);
+          const seconds = timeLeft % 60;
+          document.getElementById("timer").textContent =
+            minutes.toString().padStart(2, "0") +
+            ":" +
+            seconds.toString().padStart(2, "0");
+        }
+
+        document
+          .getElementById("resetBtn")
+          .addEventListener("click", function () {
+            clearInterval(timerInterval);
+            timeLeft = 15 * 60;
+            isTimerRunning = false;
+            document.getElementById("startPauseBtn").textContent =
+              currentLang === "nl" ? "Start" : "Start";
+            updateTimerDisplay();
+            document.getElementById("timer-complete").style.display = "none";
+          });
+      });
+    </script>
+
+    <style>
+      .coin-container {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 3px 10px;
+      }
+
+      .coin-icon {
+        margin-right: 5px;
+        font-size: 1.2em;
+      }
+
+      #coin-display {
+        font-weight: bold;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-left: auto;
+      }
+
+      .user-avatar {
+        margin-right: 10px;
+      }
+
+      .user-name {
+        margin-right: 10px;
+      }
+
+      .login-link {
+        display: none;
+        color: white;
+        text-decoration: none;
+      }
+
+      .login-link a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    </style>
+  </body>
+</html>

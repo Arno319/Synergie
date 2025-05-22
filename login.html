@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - StudentBuddy</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-nav">
+        <div class="logo">
+          <img src="fotos/logo.svg" alt="StudentBuddy Logo" />
+        </div>
+        <!-- Taal selector -->
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <div class="main-menu">
+          <a href="index.html">Home</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="todoList.html">To Do List</a>
+          <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+          <a href="studieTips.html">Studie tips</a>
+          <a href="games.html">Spellen</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-title">
+      <h1 id="login-title">Inloggen</h1>
+    </div>
+
+    <main class="content">
+      <div class="login-container">
+        <div class="login-box">
+          <div class="login-tabs">
+            <button class="tab-btn active" id="login-tab">Inloggen</button>
+            <button class="tab-btn" id="register-tab">Registreren</button>
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form">
+            <div class="form-group">
+              <label for="login-email">E-mail</label>
+              <input type="email" id="login-email" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Wachtwoord</label>
+              <input type="password" id="login-password" required />
+            </div>
+            <div class="form-group remember-me">
+              <input type="checkbox" id="remember-me" />
+              <label for="remember-me">Onthoud mij</label>
+            </div>
+            <div id="login-error" class="error-message"></div>
+            <button type="submit" class="btn btn-full">Inloggen</button>
+            <div class="forgot-password">
+              <a href="#">Wachtwoord vergeten?</a>
+            </div>
+          </form>
+
+          <!-- Register Form -->
+          <form id="register-form" style="display: none">
+            <div class="form-group">
+              <label for="register-name">Naam</label>
+              <input type="text" id="register-name" required />
+            </div>
+            <div class="form-group">
+              <label for="register-email">E-mail</label>
+              <input type="email" id="register-email" required />
+            </div>
+            <div class="form-group">
+              <label for="register-password">Wachtwoord</label>
+              <input type="password" id="register-password" required />
+            </div>
+            <div class="form-group">
+              <label for="register-confirm">Bevestig wachtwoord</label>
+              <input type="password" id="register-confirm" required />
+            </div>
+            <div id="register-error" class="error-message"></div>
+            <button type="submit" class="btn btn-full">Registreren</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-social">
+            <p>Volg ons op social media</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Informatie</h3>
+          <ul>
+            <li><a href="#">Over ons</a></li>
+            <li><a href="#">Onze missie</a></li>
+            <li><a href="#">Visie & waarden</a></li>
+            <li><a href="#">Ons team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Diensten</h3>
+          <ul>
+            <li><a href="#">Projecten</a></li>
+            <li><a href="#">Activiteiten</a></li>
+            <li><a href="#">Evenementen</a></li>
+            <li><a href="#">Publicaties</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="#">Neem contact op</a></li>
+            <li><a href="#">Locatie</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Nieuwsbrief</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="language-switcher.js"></script>
+    <script src="user-auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const translations = {
+          nl: {
+            pageTitle: "Inloggen",
+            loginTab: "Inloggen",
+            registerTab: "Registreren",
+            email: "E-mail",
+            password: "Wachtwoord",
+            name: "Naam",
+            confirmPassword: "Bevestig wachtwoord",
+            rememberMe: "Onthoud mij",
+            loginButton: "Inloggen",
+            registerButton: "Registreren",
+            forgotPassword: "Wachtwoord vergeten?",
+          },
+          en: {
+            pageTitle: "Login",
+            loginTab: "Login",
+            registerTab: "Register",
+            email: "Email",
+            password: "Password",
+            name: "Name",
+            confirmPassword: "Confirm password",
+            rememberMe: "Remember me",
+            loginButton: "Login",
+            registerButton: "Register",
+            forgotPassword: "Forgot password?",
+          },
+        };
+
+        function updatePageLanguage(lang, translations) {
+          document.getElementById("login-title").textContent =
+            translations[lang].pageTitle;
+          document.getElementById("login-tab").textContent =
+            translations[lang].loginTab;
+          document.getElementById("register-tab").textContent =
+            translations[lang].registerTab;
+
+          // Update login form
+          document.querySelector('label[for="login-email"]').textContent =
+            translations[lang].email;
+          document.querySelector('label[for="login-password"]').textContent =
+            translations[lang].password;
+          document.querySelector('label[for="remember-me"]').textContent =
+            translations[lang].rememberMe;
+          document.querySelector("#login-form .btn").textContent =
+            translations[lang].loginButton;
+          document.querySelector(".forgot-password a").textContent =
+            translations[lang].forgotPassword;
+
+          // Update register form
+          document.querySelector('label[for="register-name"]').textContent =
+            translations[lang].name;
+          document.querySelector('label[for="register-email"]').textContent =
+            translations[lang].email;
+          document.querySelector('label[for="register-password"]').textContent =
+            translations[lang].password;
+          document.querySelector('label[for="register-confirm"]').textContent =
+            translations[lang].confirmPassword;
+          document.querySelector("#register-form .btn").textContent =
+            translations[lang].registerButton;
+        }
+
+        // Initialize language switcher
+        const currentLang = initializeLanguageSwitcher(
+          translations,
+          updatePageLanguage
+        );
+
+        // Tab switching logic
+        const loginTab = document.getElementById("login-tab");
+        const registerTab = document.getElementById("register-tab");
+        const loginForm = document.getElementById("login-form");
+        const registerForm = document.getElementById("register-form");
+
+        loginTab.addEventListener("click", function () {
+          loginTab.classList.add("active");
+          registerTab.classList.remove("active");
+          loginForm.style.display = "block";
+          registerForm.style.display = "none";
+        });
+
+        registerTab.addEventListener("click", function () {
+          registerTab.classList.add("active");
+          loginTab.classList.remove("active");
+          registerForm.style.display = "block";
+          loginForm.style.display = "none";
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const mainMenu = document.querySelector(".main-menu");
+
+        menuToggle.addEventListener("click", function () {
+          mainMenu.classList.toggle("active");
+          menuToggle.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

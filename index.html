@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StudentBuddy - Hoofdpagina</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="top-nav">
+        <div class="logo">
+          <img src="fotos/logo.svg" alt="StudentBuddy Logo" />
+        </div>
+        <!-- Taal selector toevoegen -->
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <!-- User profile section with coins -->
+        <div class="user-profile">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <span class="user-name">Gebruiker</span>
+          <div class="coin-container">
+            <span class="coin-icon">🪙</span>
+            <span id="coin-display">0</span>
+          </div>
+          <button id="logout-button" title="Uitloggen">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+
+        <!-- Login link - will be shown when logged out -->
+        <div class="login-link">
+          <a href="login.html">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Inloggen</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <div class="main-menu">
+          <a href="index.html">Home</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="todoList.html">To Do List</a>
+          <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+          <a href="studieTips.html">Studie tips</a>
+          <a href="games.html">Spellen</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-title">
+      <h1>Welkom bij StudentBuddy</h1>
+    </div>
+
+    <main class="content">
+      <section class="intro-section">
+        <h2>Over StudentBuddy</h2>
+        <p>
+          Welkom bij StudentBuddy, je alles-in-één platform voor een succesvol
+          en evenwichtig studentenleven! StudentBuddy is speciaal ontworpen om
+          studenten te helpen hun studie efficiënt te organiseren, productief te
+          blijven en een gezonde balans te vinden tussen studeren en ontspannen.
+        </p>
+
+        <div class="quote" id="daily-quote">
+          <i class="fas fa-quote-left quote-icon"></i>
+          <span id="quote-text">Quotes worden geladen...</span>
+          <i class="fas fa-quote-right quote-icon"></i>
+          <div id="quote-author"></div>
+        </div>
+
+        <p>
+          Of je nu worstelt met plannen, moeite hebt om geconcentreerd te
+          blijven of gewoon op zoek bent naar studietips en gezonde pauzes -
+          StudentBuddy heeft alles wat je nodig hebt om je academische reis
+          soepeler en aangenamer te maken.
+        </p>
+      </section>
+
+      <section class="services-section">
+        <h2>Wat biedt StudentBuddy?</h2>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>To-Do Lijsten</h3>
+            <p>
+              Houd al je taken en deadlines bij op één plek. Organiseer per
+              categorie, stel prioriteiten en volg je voortgang.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h3>Ontspanningsoefeningen</h3>
+            <p>
+              Effectieve pauze-activiteiten die je helpen om te ontspannen, je
+              ogen te laten rusten en met hernieuwde energie verder te studeren.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>Studietips</h3>
+            <p>
+              Praktische adviezen en bewezen studiemethoden om je leercapaciteit
+              te maximaliseren en effectiever te studeren.
+            </p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h3>Quiz</h3>
+            <p>
+              Ontspan je geest met onze kennisquizzen. Een perfecte mentale
+              pauze tussen intensieve studiesessies.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured-section">
+        <h2>Waarom StudentBuddy?</h2>
+        <p>
+          StudentBuddy is ontwikkeld door studenten, voor studenten. We
+          begrijpen de uitdagingen van het studentenleven en hebben praktische
+          tools samengebracht die jou helpen om:
+        </p>
+        <ul class="features-list">
+          <li>
+            <i class="fas fa-check-circle"></i> Je studietijd efficiënter in te
+            delen
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Stress te verminderen door goede
+            planning
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Een gezonde balans te vinden
+            tussen studeren en ontspannen
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Effectievere studiemethoden toe
+            te passen
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i> Je concentratie en
+            productiviteit te verhogen
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-social">
+            <p>Volg ons op social media</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Informatie</h3>
+          <ul>
+            <li><a href="#">Over ons</a></li>
+            <li><a href="#">Onze missie</a></li>
+            <li><a href="#">Visie & waarden</a></li>
+            <li><a href="#">Ons team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Diensten</h3>
+          <ul>
+            <li><a href="#">Projecten</a></li>
+            <li><a href="#">Activiteiten</a></li>
+            <li><a href="#">Evenementen</a></li>
+            <li><a href="#">Publicaties</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Contact</h3>
+          <ul>
+            <li><a href="#">Neem contact op</a></li>
+            <li><a href="#">Locatie</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Nieuwsbrief</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <script src="language-switcher.js"></script>
+    <script src="user-auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Taal selector functionaliteit
+        const langButtons = document.querySelectorAll(".lang-btn");
+        let currentLang = localStorage.getItem("preferredLanguage") || "nl";
+
+        // Taal gerelateerde teksten
+        const translations = {
+          nl: {
+            welcomeTitle: "Welkom bij StudentBuddy",
+            aboutTitle: "Over StudentBuddy",
+            aboutText1:
+              "Welkom bij StudentBuddy, je alles-in-één platform voor een succesvol en evenwichtig studentenleven! StudentBuddy is speciaal ontworpen om studenten te helpen hun studie efficiënt te organiseren, productief te blijven en een gezonde balans te vinden tussen studeren en ontspannen.",
+            aboutText2:
+              "Of je nu worstelt met plannen, moeite hebt om geconcentreerd te blijven of gewoon op zoek bent naar studietips en gezonde pauzes - StudentBuddy heeft alles wat je nodig hebt om je academische reis soepeler en aangenamer te maken.",
+            offersTitle: "Wat biedt StudentBuddy?",
+            todoTitle: "To-Do Lijsten",
+            todoText:
+              "Houd al je taken en deadlines bij op één plek. Organiseer per categorie, stel prioriteiten en volg je voortgang.",
+            pauseTitle: "Ontspanningsoefeningen",
+            pauseText:
+              "Effectieve pauze-activiteiten die je helpen om te ontspannen, je ogen te laten rusten en met hernieuwde energie verder te studeren.",
+            tipsTitle: "Studietips",
+            tipsText:
+              "Praktische adviezen en bewezen studiemethoden om je leercapaciteit te maximaliseren en effectiever te studeren.",
+            quizTitle: "Quiz",
+            quizText:
+              "Ontspan je geest met onze kennisquizzen. Een perfecte mentale pauze tussen intensieve studiesessies.",
+            whyTitle: "Waarom StudentBuddy?",
+            whyText:
+              "StudentBuddy is ontwikkeld door studenten, voor studenten. We begrijpen de uitdagingen van het studentenleven en hebben praktische tools samengebracht die jou helpen om:",
+            benefit1: "Je studietijd efficiënter in te delen",
+            benefit2: "Stress te verminderen door goede planning",
+            benefit3:
+              "Een gezonde balans te vinden tussen studeren en ontspannen",
+            benefit4: "Effectievere studiemethoden toe te passen",
+            benefit5: "Je concentratie en productiviteit te verhogen",
+            loginLink: "Inloggen",
+            logoutButton: "Uitloggen",
+          },
+          en: {
+            welcomeTitle: "Welcome to StudentBuddy",
+            aboutTitle: "About StudentBuddy",
+            aboutText1:
+              "Welcome to StudentBuddy, your all-in-one platform for a successful and balanced student life! StudentBuddy is specially designed to help students organize their studies efficiently, stay productive, and find a healthy balance between studying and relaxation.",
+            aboutText2:
+              "Whether you're struggling with planning, having trouble staying focused, or just looking for study tips and healthy breaks - StudentBuddy has everything you need to make your academic journey smoother and more enjoyable.",
+            offersTitle: "What does StudentBuddy offer?",
+            todoTitle: "To-Do Lists",
+            todoText:
+              "Keep track of all your tasks and deadlines in one place. Organize by category, set priorities and track your progress.",
+            pauseTitle: "Relaxation Exercises",
+            pauseText:
+              "Effective break activities that help you relax, rest your eyes and continue studying with renewed energy.",
+            tipsTitle: "Study Tips",
+            tipsText:
+              "Practical advice and proven study methods to maximize your learning capacity and study more effectively.",
+            quizTitle: "Quiz",
+            quizText:
+              "Relax your mind with our knowledge quizzes. A perfect mental break between intensive study sessions.",
+            whyTitle: "Why StudentBuddy?",
+            whyText:
+              "StudentBuddy is developed by students, for students. We understand the challenges of student life and have brought together practical tools to help you:",
+            benefit1: "Organize your study time more efficiently",
+            benefit2: "Reduce stress through good planning",
+            benefit3: "Find a healthy balance between studying and relaxation",
+            benefit4: "Apply more effective study methods",
+            benefit5: "Increase your concentration and productivity",
+            loginLink: "Login",
+            logoutButton: "Logout",
+          },
+        };
+
+        // Initialiseer taal
+        setActiveLanguage(currentLang);
+        updatePageLanguage(currentLang);
+
+        // Event listeners voor taal knoppen
+        langButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const lang = this.getAttribute("data-lang");
+            setActiveLanguage(lang);
+            updatePageLanguage(lang);
+            localStorage.setItem("preferredLanguage", lang);
+          });
+        });
+
+        function setActiveLanguage(lang) {
+          langButtons.forEach((btn) => {
+            if (btn.getAttribute("data-lang") === lang) {
+              btn.classList.add("active");
+            } else {
+              btn.classList.remove("active");
+            }
+          });
+        }
+
+        function updatePageLanguage(lang) {
+          document.querySelector(".page-title h1").textContent =
+            translations[lang].welcomeTitle;
+          document.querySelector(".intro-section h2").textContent =
+            translations[lang].aboutTitle;
+
+          const introParagraphs = document.querySelectorAll(".intro-section p");
+          introParagraphs[0].textContent = translations[lang].aboutText1;
+          introParagraphs[1].textContent = translations[lang].aboutText2;
+
+          document.querySelector(".services-section h2").textContent =
+            translations[lang].offersTitle;
+
+          const serviceCards = document.querySelectorAll(".service-card");
+          serviceCards[0].querySelector("h3").textContent =
+            translations[lang].todoTitle;
+          serviceCards[0].querySelector("p").textContent =
+            translations[lang].todoText;
+
+          serviceCards[1].querySelector("h3").textContent =
+            translations[lang].pauseTitle;
+          serviceCards[1].querySelector("p").textContent =
+            translations[lang].pauseText;
+
+          serviceCards[2].querySelector("h3").textContent =
+            translations[lang].tipsTitle;
+          serviceCards[2].querySelector("p").textContent =
+            translations[lang].tipsText;
+
+          serviceCards[3].querySelector("h3").textContent =
+            translations[lang].quizTitle;
+          serviceCards[3].querySelector("p").textContent =
+            translations[lang].quizText;
+
+          document.querySelector(".featured-section h2").textContent =
+            translations[lang].whyTitle;
+          document.querySelector(".featured-section > p").textContent =
+            translations[lang].whyText;
+
+          const benefitItems = document.querySelectorAll(".features-list li");
+          benefitItems[0].innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang].benefit1}`;
+          benefitItems[1].innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang].benefit2}`;
+          benefitItems[2].innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang].benefit3}`;
+          benefitItems[3].innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang].benefit4}`;
+          benefitItems[4].innerHTML = `<i class="fas fa-check-circle"></i> ${translations[lang].benefit5}`;
+
+          // Update login/logout text
+          const loginLinkText = document.querySelector(".login-link a span");
+          const logoutButton = document.getElementById("logout-button");
+
+          if (loginLinkText) {
+            loginLinkText.textContent = translations[lang].loginLink;
+          }
+
+          if (logoutButton) {
+            logoutButton.title = translations[lang].logoutButton;
+          }
+        }
+
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const mainMenu = document.querySelector(".main-menu");
+
+        menuToggle.addEventListener("click", function () {
+          mainMenu.classList.toggle("active");
+          menuToggle.classList.toggle("open");
+        });
+
+        // Fetch random inspirational quote from API
+        async function fetchQuote() {
+          try {
+            const response = await fetch(
+              "https://api.quotable.io/random?tags=inspirational,education,wisdom"
+            );
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            const data = await response.json();
+
+            // Update quote on the page
+            document.getElementById("quote-text").textContent = data.content;
+            document.getElementById(
+              "quote-author"
+            ).textContent = `— ${data.author}`;
+          } catch (error) {
+            console.error("Error fetching quote:", error);
+            // Fallback quotes in case API fails
+            const fallbackQuotes = [
+              {
+                text: "Education is the most powerful weapon which you can use to change the world.",
+                author: "Nelson Mandela",
+              },
+              {
+                text: "The beautiful thing about learning is that nobody can take it away from you.",
+                author: "B.B. King",
+              },
+              {
+                text: "The only person who is educated is the one who has learned how to learn and change.",
+                author: "Carl Rogers",
+              },
+              {
+                text: "Develop a passion for learning. If you do, you will never cease to grow.",
+                author: "Anthony J. D'Angelo",
+              },
+            ];
+            const randomQuote =
+              fallbackQuotes[Math.floor(Math.random() * fallbackQuotes.length)];
+            document.getElementById("quote-text").textContent =
+              randomQuote.text;
+            document.getElementById(
+              "quote-author"
+            ).textContent = `— ${randomQuote.author}`;
+          }
+        }
+
+        // Fetch quote when page loads
+        fetchQuote();
+      });
+    </script>
+
+    <style>
+      /* Language selector styling */
+      .language-selector {
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        margin-right: auto;
+      }
+
+      .lang-btn {
+        background: none;
+        border: none;
+        color: white;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 5px 8px;
+        border-radius: 4px;
+        font-size: 0.9em;
+        transition: background-color 0.2s;
+      }
+
+      .lang-btn:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .lang-btn.active {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .lang-separator {
+        color: white;
+        margin: 0 5px;
+      }
+    </style>
+  </body>
+</html>

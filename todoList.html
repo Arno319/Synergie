@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student To-Do Lijst</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-nav">
+        <div class="logo">
+          <img src="fotos/logo.svg" alt="StudentBuddy Logo" />
+        </div>
+        <!-- Taal selector toevoegen -->
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <!-- User profile section with coins -->
+        <div class="user-profile">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <span class="user-name">Gebruiker</span>
+          <div class="coin-container">
+            <span class="coin-icon">🪙</span>
+            <span id="coin-display">0</span>
+          </div>
+          <button id="logout-button" title="Uitloggen">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+
+        <!-- Login link - will be shown when logged out -->
+        <div class="login-link">
+          <a href="login.html">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Inloggen</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <div class="main-menu">
+          <a href="index.html">Home</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="todoList.html">To Do List</a>
+          <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+          <a href="studieTips.html">Studie tips</a>
+          <a href="games.html">Spellen</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-title">
+      <h1>Organiseer je taken</h1>
+    </div>
+
+    <div class="content">
+      <div class="todo-container">
+        <div class="todo-header">
+          <h2>Mijn To-Do Lijst</h2>
+          <p>
+            Houd al je taken bij op één plek. Plan je studie, organiseer je
+            deadlines en blijf op schema.
+          </p>
+        </div>
+
+        <div class="todo-add">
+          <form id="todo-form">
+            <div class="input-group">
+              <input
+                type="text"
+                id="todo-input"
+                placeholder="Nieuwe taak toevoegen..."
+                required
+              />
+              <select id="todo-category">
+                <option value="studie">📚 Studie</option>
+                <option value="persoonlijk">👤 Persoonlijk</option>
+                <option value="urgent">🔥 Urgent</option>
+                <option value="later">⏱️ Later</option>
+              </select>
+              <button type="submit" class="btn">
+                <i class="fas fa-plus"></i> Toevoegen
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="todo-filters">
+          <button class="filter-btn active" data-filter="all">
+            Alle taken
+          </button>
+          <button class="filter-btn" data-filter="studie">Studie</button>
+          <button class="filter-btn" data-filter="persoonlijk">
+            Persoonlijk
+          </button>
+          <button class="filter-btn" data-filter="urgent">Urgent</button>
+          <button class="filter-btn" data-filter="later">Later</button>
+          <button class="filter-btn" data-filter="completed">Voltooid</button>
+        </div>
+
+        <div class="todo-stats">
+          <div class="stat-item">
+            <span id="total-count">0</span>
+            <span>Totaal</span>
+          </div>
+          <div class="stat-item">
+            <span id="completed-count">0</span>
+            <span>Voltooid</span>
+          </div>
+          <div class="stat-item">
+            <span id="pending-count">0</span>
+            <span>Openstaand</span>
+          </div>
+        </div>
+
+        <div class="todo-list" id="todo-list">
+          <!-- To-do items will be added here dynamically -->
+          <div class="empty-state">
+            <p>Je hebt nog geen taken toegevoegd.</p>
+            <p>Begin met het toevoegen van taken om ze hier te zien.</p>
+          </div>
+        </div>
+
+        <div class="todo-actions">
+          <button class="btn btn-secondary" id="clear-completed">
+            <i class="fas fa-check-double"></i> Voltooide taken wissen
+          </button>
+          <button class="btn btn-danger" id="clear-all">
+            <i class="fas fa-trash"></i> Alles wissen
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-social">
+            <p>Volg #ucll op sociale media:</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="TikTok">♫</a>
+              <a href="#" aria-label="Instagram">I</a>
+              <a href="#" aria-label="YouTube">▶</a>
+              <a href="#" aria-label="Twitter">X</a>
+              <a href="#" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Opleidingen</h3>
+          <ul>
+            <li><a href="#">Alle opleidingen</a></li>
+            <li><a href="#">Opleidingstypes</a></li>
+            <li><a href="#">Opleidingsvormen</a></li>
+            <li><a href="#">Interessegebieden</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Studeren aan UCLL</h3>
+          <ul>
+            <li><a href="#">Diensten voor studenten</a></li>
+            <li><a href="#">Onze campussen</a></li>
+            <li><a href="#">Infomomenten</a></li>
+            <li><a href="#">Inschrijven</a></li>
+            <li><a href="#">Studentenleven aan UCLL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Snel naar</h3>
+          <ul>
+            <li><a href="#">Bibliotheek</a></li>
+            <li><a href="#">Vacatures</a></li>
+            <li><a href="#">Wie-is-wie</a></li>
+            <li><a href="#">Sponsoring</a></li>
+            <li><a href="#">Pauze Activiteiten</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="language-switcher.js"></script>
+    <script src="user-auth.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Vertalingen voor de todo lijst
+        const translations = {
+          nl: {
+            pageTitle: "Organiseer je taken",
+            sectionTitle: "Mijn To-Do Lijst",
+            sectionDescription:
+              "Houd al je taken bij op één plek. Plan je studie, organiseer je deadlines en blijf op schema.",
+            addNew: "Nieuwe taak toevoegen...",
+            add: "Toevoegen",
+            studyCategory: "📚 Studie",
+            personalCategory: "👤 Persoonlijk",
+            urgentCategory: "🔥 Urgent",
+            laterCategory: "⏱️ Later",
+            allTasks: "Alle taken",
+            study: "Studie",
+            personal: "Persoonlijk",
+            urgent: "Urgent",
+            later: "Later",
+            completed: "Voltooid",
+            total: "Totaal",
+            pending: "Openstaand",
+            clearCompleted: "Voltooide taken wissen",
+            clearAll: "Alles wissen",
+            noTasks: "Je hebt nog geen taken toegevoegd.",
+            addTasksInfo:
+              "Begin met het toevoegen van taken om ze hier te zien.",
+            confirmClearCompleted:
+              "Weet je zeker dat je alle voltooide taken wilt verwijderen?",
+            confirmClearAll:
+              "Weet je zeker dat je ALLE taken wilt verwijderen?",
+            taskAdded: "Taak toegevoegd!",
+            taskRemoved: "Taak verwijderd",
+            taskUpdated: "Taak bijgewerkt",
+            tasksRemoved: "Voltooide taken verwijderd",
+            allTasksRemoved: "Alle taken verwijderd",
+            statusCompleted: "voltooid",
+            statusActive: "actief",
+            loginLink: "Inloggen",
+            logoutButton: "Uitloggen",
+          },
+          en: {
+            pageTitle: "Organize your tasks",
+            sectionTitle: "My To-Do List",
+            sectionDescription:
+              "Keep track of all your tasks in one place. Plan your studies, organize deadlines and stay on schedule.",
+            addNew: "Add new task...",
+            add: "Add",
+            studyCategory: "📚 Study",
+            personalCategory: "👤 Personal",
+            urgentCategory: "🔥 Urgent",
+            laterCategory: "⏱️ Later",
+            allTasks: "All tasks",
+            study: "Study",
+            personal: "Personal",
+            urgent: "Urgent",
+            later: "Later",
+            completed: "Completed",
+            total: "Total",
+            pending: "Pending",
+            clearCompleted: "Clear completed tasks",
+            clearAll: "Clear all",
+            noTasks: "You haven't added any tasks yet.",
+            addTasksInfo: "Start adding tasks to see them here.",
+            confirmClearCompleted:
+              "Are you sure you want to remove all completed tasks?",
+            confirmClearAll: "Are you sure you want to remove ALL tasks?",
+            taskAdded: "Task added!",
+            taskRemoved: "Task removed",
+            taskUpdated: "Task updated",
+            tasksRemoved: "Completed tasks removed",
+            allTasksRemoved: "All tasks removed",
+            statusCompleted: "completed",
+            statusActive: "active",
+            loginLink: "Login",
+            logoutButton: "Logout",
+          },
+        };
+
+        // Functie om de pagina-inhoud bij te werken op basis van de geselecteerde taal
+        function updatePageLanguage(lang, translations) {
+          // Update paginatitels
+          document.querySelector(".page-title h1").textContent =
+            translations[lang].pageTitle;
+          document.querySelector(".todo-header h2").textContent =
+            translations[lang].sectionTitle;
+          document.querySelector(".todo-header p").textContent =
+            translations[lang].sectionDescription;
+
+          // Update formulier
+          document.getElementById("todo-input").placeholder =
+            translations[lang].addNew;
+          document.querySelector(
+            ".todo-add .btn"
+          ).innerHTML = `<i class="fas fa-plus"></i> ${translations[lang].add}`;
+
+          // Update categorieën in selectie
+          const categoryOptions =
+            document.getElementById("todo-category").options;
+          categoryOptions[0].text = translations[lang].studyCategory;
+          categoryOptions[1].text = translations[lang].personalCategory;
+          categoryOptions[2].text = translations[lang].urgentCategory;
+          categoryOptions[3].text = translations[lang].laterCategory;
+
+          // Update filter knoppen
+          const filterButtons = document.querySelectorAll(".filter-btn");
+          filterButtons[0].textContent = translations[lang].allTasks;
+          filterButtons[1].textContent = translations[lang].study;
+          filterButtons[2].textContent = translations[lang].personal;
+          filterButtons[3].textContent = translations[lang].urgent;
+          filterButtons[4].textContent = translations[lang].later;
+          filterButtons[5].textContent = translations[lang].completed;
+
+          // Update statistieken labels
+          const statItems = document.querySelectorAll(".stat-item");
+          statItems[0].querySelector("span:last-child").textContent =
+            translations[lang].total;
+          statItems[1].querySelector("span:last-child").textContent =
+            translations[lang].completed;
+          statItems[2].querySelector("span:last-child").textContent =
+            translations[lang].pending;
+
+          // Update actie knoppen
+          document.getElementById(
+            "clear-completed"
+          ).innerHTML = `<i class="fas fa-check-double"></i> ${translations[lang].clearCompleted}`;
+          document.getElementById(
+            "clear-all"
+          ).innerHTML = `<i class="fas fa-trash"></i> ${translations[lang].clearAll}`;
+
+          // Update lege staat bericht
+          document.querySelector(".empty-state p:first-child").textContent =
+            translations[lang].noTasks;
+          document.querySelector(".empty-state p:last-child").textContent =
+            translations[lang].addTasksInfo;
+
+          // Sla vertalingen op in globals voor later gebruik (bevestigingsberichten etc.)
+          window.todoTranslations = translations[lang];
+
+          // Update login/logout text
+          const loginLinkText = document.querySelector(".login-link a span");
+          const logoutButton = document.getElementById("logout-button");
+
+          if (loginLinkText) {
+            loginLinkText.textContent = translations[lang].loginLink;
+          }
+
+          if (logoutButton) {
+            logoutButton.title = translations[lang].logoutButton;
+          }
+        }
+
+        // Initialiseer de taalwisselaar
+        const currentLang = initializeLanguageSwitcher(
+          translations,
+          updatePageLanguage
+        );
+
+        // DOM Elements
+        const todoForm = document.getElementById("todo-form");
+        const todoInput = document.getElementById("todo-input");
+        const todoCategory = document.getElementById("todo-category");
+        const todoList = document.getElementById("todo-list");
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const clearCompletedBtn = document.getElementById("clear-completed");
+        const clearAllBtn = document.getElementById("clear-all");
+        const totalCount = document.getElementById("total-count");
+        const completedCount = document.getElementById("completed-count");
+        const pendingCount = document.getElementById("pending-count");
+        const emptyState = document.querySelector(".empty-state");
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const mainMenu = document.querySelector(".main-menu");
+
+        // Variables
+        let todos = JSON.parse(localStorage.getItem("todos")) || [];
+        let currentFilter = "all";
+
+        // Initial render
+        renderTodos();
+        updateStats();
+
+        // Form submit handler
+        todoForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const todoText = todoInput.value.trim();
+          if (!todoText) return;
+
+          const newTodo = {
+            id: Date.now(),
+            text: todoText,
+            category: todoCategory.value,
+            completed: false,
+            createdAt: new Date().toISOString(),
+          };
+
+          todos.push(newTodo);
+          saveTodos();
+          renderTodos();
+
+          todoInput.value = "";
+          todoInput.focus();
+
+          // Show success message
+          showNotification(window.todoTranslations.taskAdded);
+        });
+
+        // Filter click handler
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Update active filter
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            this.classList.add("active");
+
+            currentFilter = this.getAttribute("data-filter");
+            renderTodos();
+          });
+        });
+
+        // Clear completed handler
+        clearCompletedBtn.addEventListener("click", function () {
+          const translations = window.todoTranslations || translations.nl;
+          if (confirm(translations.confirmClearCompleted)) {
+            todos = todos.filter((todo) => !todo.completed);
+            saveTodos();
+            renderTodos();
+            showNotification(translations.tasksRemoved);
+          }
+        });
+
+        // Clear all handler
+        clearAllBtn.addEventListener("click", function () {
+          const translations = window.todoTranslations || translations.nl;
+          if (confirm(translations.confirmClearAll)) {
+            todos = [];
+            saveTodos();
+            renderTodos();
+            showNotification(translations.allTasksRemoved);
+          }
+        });
+
+        // Toggle todo completed status
+        todoList.addEventListener("click", function (e) {
+          if (e.target.classList.contains("todo-checkbox")) {
+            const todoId = parseInt(
+              e.target.closest(".todo-item").getAttribute("data-id")
+            );
+            let status = "";
+            let wasCompleted = false;
+
+            todos = todos.map((todo) => {
+              if (todo.id === todoId) {
+                wasCompleted = todo.completed; // Save previous state
+                todo.completed = !todo.completed;
+                status = todo.completed
+                  ? window.todoTranslations.statusCompleted
+                  : window.todoTranslations.statusActive;
+
+                // Award a coin when task is marked as completed (not when unmarked)
+                if (todo.completed && !wasCompleted) {
+                  if (typeof awardCoins === "function") {
+                    const taskId = "todo_completed_" + todo.id;
+                    if (awardCoins(taskId, 1)) {
+                      // Show coin notification
+                      if (typeof showCoinNotification === "function") {
+                        showCoinNotification(1);
+                      }
+                    }
+                  }
+                }
+              }
+              return todo;
+            });
+
+            saveTodos();
+            renderTodos();
+            showNotification(`Taak gemarkeerd als ${status}`);
+          }
+
+          // Delete todo
+          if (e.target.classList.contains("todo-delete")) {
+            const todoId = parseInt(
+              e.target.closest(".todo-item").getAttribute("data-id")
+            );
+            todos = todos.filter((todo) => todo.id !== todoId);
+
+            saveTodos();
+            renderTodos();
+            showNotification(window.todoTranslations.taskRemoved);
+          }
+        });
+
+        // Edit todo
+        todoList.addEventListener("dblclick", function (e) {
+          if (e.target.classList.contains("todo-text")) {
+            const todoItem = e.target.closest(".todo-item");
+            const todoId = parseInt(todoItem.getAttribute("data-id"));
+            const todo = todos.find((todo) => todo.id === todoId);
+
+            // Create edit input
+            const currentText = e.target.textContent;
+            const editInput = document.createElement("input");
+            editInput.type = "text";
+            editInput.value = currentText;
+            editInput.classList.add("todo-edit-input");
+
+            // Replace text with input
+            e.target.textContent = "";
+            e.target.appendChild(editInput);
+            editInput.focus();
+
+            // Handle input blur
+            editInput.addEventListener("blur", finishEditing);
+            editInput.addEventListener("keypress", function (e) {
+              if (e.key === "Enter") {
+                finishEditing.call(this);
+              }
+            });
+
+            function finishEditing() {
+              const newText = this.value.trim();
+              if (newText) {
+                todos = todos.map((t) => {
+                  if (t.id === todoId) {
+                    t.text = newText;
+                  }
+                  return t;
+                });
+
+                saveTodos();
+                showNotification(window.todoTranslations.taskUpdated);
+              }
+              renderTodos();
+            }
+          }
+        });
+
+        // Show notification
+        function showNotification(message) {
+          // Create notification element
+          const notification = document.createElement("div");
+          notification.className = "notification";
+          notification.textContent = message;
+
+          // Add to document
+          document.body.appendChild(notification);
+
+          // Show with animation
+          setTimeout(() => {
+            notification.classList.add("show");
+          }, 10);
+
+          // Remove after 3 seconds
+          setTimeout(() => {
+            notification.classList.remove("show");
+            setTimeout(() => {
+              document.body.removeChild(notification);
+            }, 300);
+          }, 3000);
+        }
+
+        // Render todos based on filter
+        function renderTodos() {
+          // Clear current todos
+          while (todoList.firstChild && todoList.firstChild !== emptyState) {
+            todoList.removeChild(todoList.firstChild);
+          }
+
+          // Filter todos
+          let filteredTodos = todos;
+          if (currentFilter !== "all") {
+            filteredTodos = todos.filter((todo) => {
+              if (currentFilter === "completed") {
+                return todo.completed;
+              } else {
+                return todo.category === currentFilter;
+              }
+            });
+          }
+
+          // Sort todos: completed at bottom, then by creation date (newest first)
+          filteredTodos.sort((a, b) => {
+            if (a.completed !== b.completed) {
+              return a.completed ? 1 : -1;
+            }
+            return new Date(b.createdAt) - new Date(a.createdAt);
+          });
+
+          // Show empty state if no todos
+          if (todos.length === 0) {
+            emptyState.style.display = "block";
+          } else {
+            emptyState.style.display = "none";
+          }
+
+          // Create todo elements
+          filteredTodos.forEach((todo) => {
+            const todoItem = document.createElement("div");
+            todoItem.classList.add("todo-item");
+            todoItem.setAttribute("data-id", todo.id);
+            todoItem.setAttribute("data-category", todo.category);
+
+            if (todo.completed) {
+              todoItem.classList.add("completed");
+            }
+
+            todoItem.innerHTML = `
+                <div class="todo-content">
+                    <input type="checkbox" class="todo-checkbox" ${
+                      todo.completed ? "checked" : ""
+                    }>
+                    <span class="todo-text">${todo.text}</span>
+                    <span class="todo-category-tag ${todo.category}">${
+              todo.category
+            }</span>
+                </div>
+                <div class="todo-actions">
+                    <button class="todo-delete">&times;</button>
+                </div>
+            `;
+
+            todoList.insertBefore(todoItem, emptyState);
+          });
+
+          updateStats();
+        }
+
+        // Save todos to localStorage
+        function saveTodos() {
+          localStorage.setItem("todos", JSON.stringify(todos));
+        }
+
+        // Update statistics
+        function updateStats() {
+          totalCount.textContent = todos.length;
+          completedCount.textContent = todos.filter(
+            (todo) => todo.completed
+          ).length;
+          pendingCount.textContent = todos.filter(
+            (todo) => !todo.completed
+          ).length;
+        }
+
+        menuToggle.addEventListener("click", function () {
+          mainMenu.classList.toggle("active");
+          menuToggle.classList.toggle("open");
+        });
+      });
+    </script>
+
+    <style>
+      /* Notification styling */
+      .notification {
+        position: fixed;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #004c97;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        transition: bottom 0.3s ease;
+        z-index: 1000;
+      }
+
+      .notification.show {
+        bottom: 20px;
+      }
+
+      /* Add these new styles for the coin container */
+      .coin-container {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 3px 10px;
+      }
+
+      .coin-icon {
+        margin-right: 5px;
+        font-size: 1.2em;
+      }
+
+      #coin-display {
+        font-weight: bold;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-left: auto;
+      }
+
+      .user-avatar {
+        margin-right: 10px;
+      }
+
+      .user-name {
+        margin-right: 10px;
+      }
+
+      .login-link {
+        display: none;
+        color: white;
+        text-decoration: none;
+      }
+
+      .login-link a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    </style>
+  </body>
+</html>

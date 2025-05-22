@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studietips - StudentBuddy</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="top-nav">
+        <div class="logo">
+          <img src="fotos/logo.svg" alt="StudentBuddy Logo" />
+        </div>
+        <!-- Taal selector toevoegen -->
+        <div class="language-selector">
+          <button class="lang-btn active" data-lang="nl">NL</button>
+          <span class="lang-separator">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+
+        <!-- User profile section with coins -->
+        <div class="user-profile" style="display: none">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <span class="user-name">Gebruiker</span>
+          <div class="coin-container">
+            <span class="coin-icon">🪙</span>
+            <span id="coin-display">0</span>
+          </div>
+          <button id="logout-button" title="Uitloggen">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+
+        <!-- Login link - will be shown when logged out -->
+        <div class="login-link">
+          <a href="login.html">
+            <i class="fas fa-sign-in-alt"></i>
+            <span>Inloggen</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="main-nav">
+        <div class="main-menu">
+          <a href="index.html">Home</a>
+          <a href="quiz.html">Quiz</a>
+          <a href="todoList.html">To Do List</a>
+          <a href="ucll-pauze-pagina-html.html">Pauze Tips</a>
+          <a href="studieTips.html">Studie tips</a>
+          <a href="games.html">Spellen</a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="page-title">
+      <h1>Slimmer Studeren</h1>
+    </div>
+
+    <main class="content">
+      <section class="intro-section">
+        <h2>Maximaliseer je studietijd</h2>
+        <p>
+          Met de juiste aanpak kun je je studietijd optimaal benutten en betere
+          resultaten behalen. Ontdek onze verzameling praktische tips en bewezen
+          strategieën die je helpen efficiënter te leren, beter te onthouden en
+          met minder stress te studeren.
+        </p>
+
+        <div class="tips-categories">
+          <div class="tip-category active" data-category="all">
+            <i class="fas fa-list"></i>
+            <span>Alle tips</span>
+          </div>
+          <div class="tip-category" data-category="productivity">
+            <i class="fas fa-bolt"></i>
+            <span>Productiviteit</span>
+          </div>
+          <div class="tip-category" data-category="memory">
+            <i class="fas fa-brain"></i>
+            <span>Geheugen</span>
+          </div>
+          <div class="tip-category" data-category="wellbeing">
+            <i class="fas fa-heart"></i>
+            <span>Welzijn</span>
+          </div>
+          <div class="tip-category" data-category="organization">
+            <i class="fas fa-tasks"></i>
+            <span>Organisatie</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="tips-container" id="studietips-grid">
+        <!-- Studietips worden dynamisch gegenereerd met JavaScript -->
+      </div>
+    </main>
+
+    <div id="tipModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+          <span class="tip-number" id="modalTipNumber">Tip 1</span>
+          <div class="tip-category-tag" id="modalTipCategory">
+            Productiviteit
+          </div>
+        </div>
+        <h2 id="modalTitle">Studietip titel</h2>
+        <div class="modal-body">
+          <p id="modalDescription"></p>
+          <div class="tip-action">
+            <h4>Probeer dit vandaag:</h4>
+            <p id="modalAction"></p>
+          </div>
+        </div>
+        <div class="modal-controls">
+          <button id="prevTip" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Vorige tip
+          </button>
+          <button id="nextTip" class="btn">
+            <i class="fas fa-arrow-right"></i> Volgende tip
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="footer-social">
+            <p>Volg #ucll op sociale media:</p>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook">f</a>
+              <a href="#" aria-label="TikTok">♫</a>
+              <a href="#" aria-label="Instagram">I</a>
+              <a href="#" aria-label="YouTube">▶</a>
+              <a href="#" aria-label="Twitter">X</a>
+              <a href="#" aria-label="LinkedIn">in</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h3>Opleidingen</h3>
+          <ul>
+            <li><a href="#">Alle opleidingen</a></li>
+            <li><a href="#">Opleidingstypes</a></li>
+            <li><a href="#">Opleidingsvormen</a></li>
+            <li><a href="#">Interessegebieden</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Studeren aan UCLL</h3>
+          <ul>
+            <li><a href="#">Diensten voor studenten</a></li>
+            <li><a href="#">Onze campussen</a></li>
+            <li><a href="#">Infomomenten</a></li>
+            <li><a href="#">Inschrijven</a></li>
+            <li><a href="#">Studentenleven aan UCLL</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h3>Snel naar</h3>
+          <ul>
+            <li><a href="#">Bibliotheek</a></li>
+            <li><a href="#">Vacatures</a></li>
+            <li><a href="#">Wie-is-wie</a></li>
+            <li><a href="#">Sponsoring</a></li>
+            <li><a href="#">Pauze Activiteiten</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="language-switcher.js"></script>
+    <script src="user-auth.js"></script>
+    <script>
+      const studietips = [
+        {
+          tip: "Maak een studieplanning met blokken van 25-30 minuten",
+          category: "productivity",
+          description:
+            "Een gestructureerde planning helpt je gefocust te blijven en voorkomt uitstelgedrag. Door je tijd in te delen in korte, beheersbare blokken kun je meer bereiken zonder motivatie te verliezen.",
+          action:
+            "Neem 10 minuten om je planning voor morgen te maken met behulp van de Pomodoro-techniek: studeer 25 minuten, pauzeer 5 minuten, en herhaal.",
+          icon: "fas fa-clock",
+        },
+        {
+          tip: "Creëer een optimale studieplek zonder afleidingen",
+          category: "organization",
+          description:
+            "Je omgeving heeft een grote invloed op je concentratie en productiviteit. Een opgeruimde, goed verlichte ruimte zonder telefoon of social media-notificaties helpt je om dieper te focussen.",
+          action:
+            "Maak van je studieplek een no-phone zone en werk 90 minuten zonder onderbreking van notificaties. Je zult verbaasd zijn over het resultaat!",
+          icon: "fas fa-desktop",
+        },
+        {
+          tip: "Slaap 7-8 uur per nacht voor optimale hersenfunctie",
+          category: "wellbeing",
+          description:
+            "Tijdens de slaap verwerkt je brein nieuwe informatie en versterkt het je geheugen. Met voldoende slaap verbeter je je concentratie, probleemoplossend vermogen en creativiteit.",
+          action:
+            "Stel een vast slaapschema in en stop één uur voor bedtijd met schermgebruik. Probeer dit een week vol te houden en merk het verschil.",
+          icon: "fas fa-bed",
+        },
+        {
+          tip: "Gebruik actieve herhaling in plaats van passief lezen",
+          category: "memory",
+          description:
+            "Actief met de stof bezig zijn - zoals jezelf overhoren, oefenvragen maken of de stof uitleggen - zorgt voor een veel betere verankering in je geheugen dan alleen maar lezen of onderstrepen.",
+          action:
+            "Neem een hoofdstuk dat je net hebt gelezen en leg de belangrijkste concepten hardop uit aan een denkbeeldig publiek. Merk op waar je vastloopt.",
+          icon: "fas fa-sync",
+        },
+        {
+          tip: "Bereid je voor met oude tentamens en examenvragen",
+          category: "organization",
+          description:
+            "Door met oude tentamens te oefenen raak je vertrouwd met de vraagstelling, begrijp je beter wat belangrijk is, en train je onder tijdsdruk te werken - precies zoals tijdens het echte examen.",
+          action:
+            "Vraag je docent of medestudenten naar oude tentamens, of zoek in de mediatheek. Maak minstens één oud tentamen volledig binnen de tijdslimiet.",
+          icon: "fas fa-file-alt",
+        },
+        {
+          tip: "Probeer de Feynman-techniek: leg de stof eenvoudig uit",
+          category: "memory",
+          description:
+            "De Feynman-techniek draait om het uitleggen van complexe concepten in eenvoudige taal. Als je iets niet makkelijk kunt uitleggen, begrijp je het zelf nog niet volledig - en weet je waar je meer aandacht aan moet besteden.",
+          action:
+            "Kies een lastig concept uit je studiemateriaal en probeer het uit te leggen aan een kind van 12 jaar. Schrijf het op en vereenvoudig tot je tevreden bent.",
+          icon: "fas fa-chalkboard-teacher",
+        },
+        {
+          tip: "Varieer je studiemethoden voor beter begrip",
+          category: "memory",
+          description:
+            "Door verschillende leermethoden te combineren - zoals lezen, luisteren, schrijven, discussiëren en visualiseren - activeer je verschillende delen van je brein en bouw je een steviger begrip op.",
+          action:
+            "Kies een onderwerp en gebruik minstens drie verschillende methoden om het te bestuderen, bijvoorbeeld: lezen, een video bekijken, en een mindmap maken.",
+          icon: "fas fa-random",
+        },
+        {
+          tip: "Neem strategische pauzes om mentale vermoeidheid te voorkomen",
+          category: "wellbeing",
+          description:
+            "Je brein heeft tijd nodig om nieuwe informatie te verwerken. Regelmatige, korte pauzes verbeteren je concentratie, productiviteit en creatief denkvermogen gedurende de dag.",
+          action:
+            "Gebruik de 52/17 regel: werk 52 minuten geconcentreerd, en neem dan 17 minuten écht pauze door weg te lopen van je bureau en iets compleet anders te doen.",
+          icon: "fas fa-coffee",
+        },
+        {
+          tip: "Maak effectieve flashcards voor snelle herhaling",
+          category: "memory",
+          description:
+            "Flashcards zijn ideaal voor het leren van feiten, definities en formules. Door ze regelmatig door te nemen versterk je je geheugen door zogenaamde 'spaced repetition' - herhaling met toenemende intervallen.",
+          action:
+            "Maak digitale flashcards met Anki of Quizlet voor je eerstvolgende tentamen, en besteed elke dag 10 minuten aan herhaling, bijvoorbeeld tijdens het reizen.",
+          icon: "fas fa-clipboard",
+        },
+        {
+          tip: "Benut de kracht van studiegroepen voor dieper inzicht",
+          category: "organization",
+          description:
+            "In een studiegroep kun je vragen stellen, kennis delen en concepten vanuit verschillende perspectieven bekijken. Door te onderwijzen leer je zelf ook beter, en sociale verplichtingen helpen tegen uitstelgedrag.",
+          action:
+            "Plan deze week een studiesessie met 2-3 medestudenten. Laat iedereen één onderwerp voorbereiden om aan de anderen uit te leggen.",
+          icon: "fas fa-users",
+        },
+        {
+          tip: "Beweeg regelmatig voor betere cognitieve functie",
+          category: "wellbeing",
+          description:
+            "Zelfs korte bewegingsactiviteiten verhogen de bloedstroom naar je hersenen, verbeteren je concentratie en verhogen de productie van neuronen in gebieden die belangrijk zijn voor leren en geheugen.",
+          action:
+            "Neem na elk uur studeren 5 minuten om te bewegen: doe wat jumping jacks, rek- en strekoefeningen of loop een rondje buiten voor frisse lucht.",
+          icon: "fas fa-running",
+        },
+        {
+          tip: "Blijf gehydrateerd voor optimale hersenfunctie",
+          category: "wellbeing",
+          description:
+            "Zelfs lichte uitdroging kan je cognitieve functies negatief beïnvloeden, waaronder geheugen, aandacht en alertheid. Water drinken is een van de simpelste manieren om je concentratie te verbeteren.",
+          action:
+            "Zet een fles water op je bureau en drink minstens 2 liter verspreid over de dag. Bij elk toiletbezoek doe je een korte beweegpauze.",
+          icon: "fas fa-tint",
+        },
+        {
+          tip: "Gebruik de 'Digital Detox' methode tijdens studiesessies",
+          category: "productivity",
+          description:
+            "Onderzoek toont aan dat zelfs de aanwezigheid van je telefoon je cognitieve capaciteit vermindert, ook als hij op stil staat. Door digitale afleidingen volledig te elimineren, verbeter je je concentratie drastisch.",
+          action:
+            "Download een app zoals Forest of Freedom die je telefoon tijdelijk blokkeert. Start met een blok van 90 minuten waarin je volledig afgesloten bent van social media en berichten.",
+          icon: "fas fa-mobile-alt",
+        },
+        {
+          tip: "Creëer visuele mindmaps voor complexe onderwerpen",
+          category: "memory",
+          description:
+            "Mindmaps helpen je de verbanden tussen verschillende concepten te zien en te onthouden. Door informatie visueel te structureren kun je grote hoeveelheden kennis beter verwerken en onthouden.",
+          action:
+            "Maak een kleurrijke mindmap voor het volgende hoofdstuk dat je moet leren. Gebruik verschillende kleuren voor verschillende categorieën en teken verbindingen tussen gerelateerde concepten.",
+          icon: "fas fa-project-diagram",
+        },
+        {
+          tip: "Stel SMART-doelen voor effectieve studiesessies",
+          category: "productivity",
+          description:
+            "Specifieke, Meetbare, Acceptabele, Realistische en Tijdgebonden doelen maken je studieplanning concreter en verhogen je kans op succes. Ze geven richting en maken voortgang zichtbaar.",
+          action:
+            "Schrijf voor je volgende studiedag drie SMART-doelen op. Bijvoorbeeld: 'Ik maak en begrijp alle oefeningen van hoofdstuk 4 tussen 14:00 en 16:30 uur'.",
+          icon: "fas fa-bullseye",
+        },
+        {
+          tip: "Gebruik background noise voor betere concentratie",
+          category: "productivity",
+          description:
+            "De juiste achtergrondgeluiden kunnen afleidende omgevingsgeluiden maskeren en je concentratie verbeteren. Instrumentale muziek, natuurgeluiden of white noise kunnen een concentratie-bevorderende 'bubbel' creëren.",
+          action:
+            "Probeer verschillende types study music op YouTube of Spotify: instrumentale klassieke muziek, lo-fi beats, natuurgeluiden of white noise. Merk op welke jou het beste helpt focussen.",
+          icon: "fas fa-headphones",
+        },
+        {
+          tip: "Test jezelf regelmatig voor betere retentie",
+          category: "memory",
+          description:
+            "Jezelf testen is een van de meest effectieve leermethoden. Het dwingt je om informatie actief op te halen, wat het geheugen versterkt, en laat zien waar je nog kennis mist.",
+          action:
+            "Na elk hoofdstuk dat je leest, sluit je het boek en schrijf je uit je hoofd op wat je je kunt herinneren. Vergelijk dan met het origineel om hiaten in je kennis te identificeren.",
+          icon: "fas fa-tasks",
+        },
+        {
+          tip: "Gebruik de 'chunking' techniek voor grote hoeveelheden informatie",
+          category: "memory",
+          description:
+            "Chunking is het groeperen van kleine informatie-eenheden in grotere, betekenisvolle eenheden. Dit helpt je brein om meer informatie te verwerken en onthouden dan wanneer je losse feiten probeert te leren.",
+          action:
+            "Neem een lijst met feiten of concepten die je moet leren. Groepeer ze in logische categorieën van 3-5 items en leer ze per categorie in plaats van als losse feiten.",
+          icon: "fas fa-layer-group",
+        },
+        {
+          tip: "Bouw een beloningssysteem in je studieplanning",
+          category: "productivity",
+          description:
+            "Een beloningssysteem motiveert je om doelen te halen en maakt studeren plezieriger. Door jezelf te 'belonen' na het voltooien van taken, koppel je positieve emoties aan je studiewerk.",
+          action:
+            "Maak een lijst met kleine beloningen (10 minuten social media, stukje chocolade) en grote beloningen (film kijken, uit eten). Koppel ze aan specifieke studietaken en houd je eraan!",
+          icon: "fas fa-gift",
+        },
+        {
+          tip: "Pas de SQ3R-methode toe voor effectief tekstbegrip",
+          category: "memory",
+          description:
+            "De SQ3R-methode (Survey, Question, Read, Recite, Review) is een beproefde leestechniek die je helpt teksten beter te begrijpen en onthouden door een gestructureerde aanpak.",
+          action:
+            "Gebruik de SQ3R-methode voor het volgende hoofdstuk dat je moet lezen: scan eerst, stel vragen op basis van kopjes, lees aandachtig, herhaal de belangrijkste punten, en herzie daarna.",
+          icon: "fas fa-book",
+        },
+        {
+          tip: "Start je dag met je moeilijkste taken (Eat the Frog)",
+          category: "productivity",
+          description:
+            "De 'Eat the Frog' methode houdt in dat je je dag begint met de moeilijkste of meest onaangename taak. Dit geeft voldoening, vermindert uitstelgedrag en maakt de rest van de dag makkelijker.",
+          action:
+            "Identificeer je 'frog' - de taak die je het meest uitstelt maar wel belangrijk is. Plan deze als eerste voor morgenochtend en beloon jezelf als je hem afrondt.",
+          icon: "fas fa-frog",
+        },
+      ];
+
+      // Vertalingen voor de studietips pagina
+      const translations = {
+        nl: {
+          pageTitle: "Slimmer Studeren",
+          sectionTitle: "Maximaliseer je studietijd",
+          introText:
+            "Met de juiste aanpak kun je je studietijd optimaal benutten en betere resultaten behalen. Ontdek onze verzameling praktische tips en bewezen strategieën die je helpen efficiënter te leren, beter te onthouden en met minder stress te studeren.",
+          allTips: "Alle tips",
+          productivity: "Productiviteit",
+          memory: "Geheugen",
+          wellbeing: "Welzijn",
+          organization: "Organisatie",
+          tipNumber: "Tip",
+          tryToday: "Probeer dit vandaag:",
+          prevTip: "Vorige tip",
+          nextTip: "Volgende tip",
+        },
+        en: {
+          pageTitle: "Smarter Studying",
+          sectionTitle: "Maximize your study time",
+          introText:
+            "With the right approach, you can make optimal use of your study time and achieve better results. Discover our collection of practical tips and proven strategies that help you learn more efficiently, remember better, and study with less stress.",
+          allTips: "All tips",
+          productivity: "Productivity",
+          memory: "Memory",
+          wellbeing: "Wellbeing",
+          organization: "Organization",
+          tipNumber: "Tip",
+          tryToday: "Try this today:",
+          prevTip: "Previous tip",
+          nextTip: "Next tip",
+        },
+      };
+
+      // Engelse vertalingen voor de studietips
+      const englishTips = {
+        "Maak een studieplanning met blokken van 25-30 minuten":
+          "Create a study schedule with 25-30 minute blocks",
+        "Een gestructureerde planning helpt je gefocust te blijven en voorkomt uitstelgedrag. Door je tijd in te delen in korte, beheersbare blokken kun je meer bereiken zonder motivatie te verliezen.":
+          "A structured schedule helps you stay focused and prevents procrastination. By dividing your time into short, manageable blocks, you can achieve more without losing motivation.",
+        "Neem 10 minuten om je planning voor morgen te maken met behulp van de Pomodoro-techniek: studeer 25 minuten, pauzeer 5 minuten, en herhaal.":
+          "Take 10 minutes to create your schedule for tomorrow using the Pomodoro technique: study for 25 minutes, pause for 5 minutes, and repeat.",
+
+        // ...andere vertalingen voor studietips...
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const studietipsGrid = document.getElementById("studietips-grid");
+        const tipModal = document.getElementById("tipModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalTipNumber = document.getElementById("modalTipNumber");
+        const modalTipCategory = document.getElementById("modalTipCategory");
+        const modalDescription = document.getElementById("modalDescription");
+        const modalAction = document.getElementById("modalAction");
+        const closeModal = document.querySelector(".close-modal");
+        const prevTipBtn = document.getElementById("prevTip");
+        const nextTipBtn = document.getElementById("nextTip");
+        const categoryButtons = document.querySelectorAll(".tip-category");
+
+        let currentTipIndex = 0;
+        let currentFilter = "all";
+        let filteredTips = [...studietips];
+
+        // Generate tip cards
+        function renderTipCards() {
+          studietipsGrid.innerHTML = "";
+
+          filteredTips.forEach((studietip, index) => {
+            const tipCard = document.createElement("div");
+            tipCard.classList.add("tip-card");
+            tipCard.dataset.category = studietip.category;
+
+            tipCard.innerHTML = `
+              <div class="tip-icon"><i class="${studietip.icon}"></i></div>
+              <div class="tip-content">
+                <span class="tip-number">Tip ${index + 1}</span>
+                <h3>${studietip.tip}</h3>
+                <div class="tip-category-tag ${
+                  studietip.category
+                }">${getCategoryName(studietip.category)}</div>
+              </div>
+              <button class="tip-read-more btn" data-index="${index}">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            `;
+
+            studietipsGrid.appendChild(tipCard);
+          });
+
+          // Add event listeners to new buttons
+          document.querySelectorAll(".tip-read-more").forEach((btn) => {
+            btn.addEventListener("click", openTipModal);
+          });
+        }
+
+        // Helper to get readable category name
+        function getCategoryName(category) {
+          const names = {
+            productivity: "Productiviteit",
+            memory: "Geheugen",
+            wellbeing: "Welzijn",
+            organization: "Organisatie",
+          };
+          return names[category] || category;
+        }
+
+        // Filter tips by category
+        function filterTips(category) {
+          currentFilter = category;
+
+          if (category === "all") {
+            filteredTips = [...studietips];
+          } else {
+            filteredTips = studietips.filter(
+              (tip) => tip.category === category
+            );
+          }
+
+          renderTipCards();
+        }
+
+        // Set active category
+        categoryButtons.forEach((btn) => {
+          btn.addEventListener("click", function () {
+            categoryButtons.forEach((b) => b.classList.remove("active"));
+            this.classList.add("active");
+            filterTips(this.dataset.category);
+          });
+        });
+
+        // Open tip modal
+        function openTipModal(e) {
+          const index = parseInt(this.getAttribute("data-index"));
+          currentTipIndex = index;
+          showTipDetails(currentTipIndex);
+          tipModal.style.display = "block";
+
+          // Award coins for viewing a tip (once per tip)
+          const tip = filteredTips[index];
+          if (tip) {
+            const tipId =
+              "tip_viewed_" + tip.tip.substring(0, 20).replace(/\s/g, "_"); // Create ID from tip title
+            if (typeof awardCoins === "function") {
+              if (awardCoins(tipId, 1)) {
+                // Only show notification if coins were actually awarded (first time viewing)
+                if (typeof showCoinNotification === "function") {
+                  showCoinNotification(1);
+                }
+              }
+            }
+          }
+        }
+
+        // Show tip details in modal
+        function showTipDetails(index) {
+          const tip = filteredTips[index];
+          modalTipNumber.textContent = `Tip ${index + 1}`;
+          modalTitle.textContent = tip.tip;
+          modalDescription.textContent = tip.description;
+          modalAction.textContent = tip.action;
+          modalTipCategory.textContent = getCategoryName(tip.category);
+          modalTipCategory.className = `tip-category-tag ${tip.category}`;
+
+          // Update buttons state
+          prevTipBtn.disabled = index === 0;
+          nextTipBtn.disabled = index === filteredTips.length - 1;
+        }
+
+        // Navigate between tips
+        prevTipBtn.addEventListener("click", function () {
+          if (currentTipIndex > 0) {
+            currentTipIndex--;
+            showTipDetails(currentTipIndex);
+          }
+        });
+
+        nextTipBtn.addEventListener("click", function () {
+          if (currentTipIndex < filteredTips.length - 1) {
+            currentTipIndex++;
+            showTipDetails(currentTipIndex);
+          }
+        });
+
+        // Close modal events
+        closeModal.addEventListener("click", () => {
+          tipModal.style.display = "none";
+        });
+
+        window.addEventListener("click", (e) => {
+          if (e.target === tipModal) {
+            tipModal.style.display = "none";
+          }
+        });
+
+        // Initialize tips
+        renderTipCards();
+
+        // Mobile menu
+        const menuToggle = document.querySelector(".mobile-menu-toggle");
+        const mainMenu = document.querySelector(".main-menu");
+
+        if (menuToggle && mainMenu) {
+          menuToggle.addEventListener("click", function () {
+            mainMenu.classList.toggle("active");
+            menuToggle.classList.toggle("open");
+          });
+        }
+
+        // Taal functionaliteit initialiseren
+        const currentLang = initializeLanguageSwitcher(
+          translations,
+          updatePageLanguage
+        );
+
+        // Update page language
+        function updatePageLanguage(lang, translations) {
+          // Update paginatitels
+          document.querySelector(".page-title h1").textContent =
+            translations[lang].pageTitle;
+          document.querySelector(".intro-section h2").textContent =
+            translations[lang].sectionTitle;
+          document.querySelector(".intro-section p").textContent =
+            translations[lang].introText;
+
+          // Update categorieën
+          document.querySelector('[data-category="all"] span').textContent =
+            translations[lang].allTips;
+          document.querySelector(
+            '[data-category="productivity"] span'
+          ).textContent = translations[lang].productivity;
+          document.querySelector('[data-category="memory"] span').textContent =
+            translations[lang].memory;
+          document.querySelector(
+            '[data-category="wellbeing"] span'
+          ).textContent = translations[lang].wellbeing;
+          document.querySelector(
+            '[data-category="organization"] span'
+          ).textContent = translations[lang].organization;
+
+          // Update modaal venster teksten
+          document.querySelector(".tip-action h4").textContent =
+            translations[lang].tryToday;
+          document.getElementById(
+            "prevTip"
+          ).innerHTML = `<i class="fas fa-arrow-left"></i> ${translations[lang].prevTip}`;
+          document.getElementById(
+            "nextTip"
+          ).innerHTML = `<i class="fas fa-arrow-right"></i> ${translations[lang].nextTip}`;
+
+          // Update tipkaarten als we in het Engels zijn
+          if (lang === "en") {
+            // Vertaal alle zichtbare tip titels
+            document.querySelectorAll(".tip-card h3").forEach((title) => {
+              const dutchText = title.textContent;
+              if (englishTips[dutchText]) {
+                title.textContent = englishTips[dutchText];
+              }
+            });
+
+            // Update "Tip" tekst
+            document.querySelectorAll(".tip-number").forEach((tipNum) => {
+              const number = tipNum.textContent.replace("Tip ", "");
+              tipNum.textContent = `${translations.en.tipNumber} ${number}`;
+            });
+          } else {
+            // Herstel Nederlandse titels
+            renderTipCards(); // Herlaad kaarten in het Nederlands
+          }
+        }
+      });
+    </script>
+
+    <style>
+      /* Add these new styles for the coin container */
+      .coin-container {
+        display: flex;
+        align-items: center;
+        margin-right: 15px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        padding: 3px 10px;
+      }
+
+      .coin-icon {
+        margin-right: 5px;
+        font-size: 1.2em;
+      }
+
+      #coin-display {
+        font-weight: bold;
+      }
+
+      .user-profile {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-left: auto;
+      }
+
+      .user-avatar {
+        margin-right: 10px;
+      }
+
+      .user-name {
+        margin-right: 10px;
+      }
+
+      .login-link {
+        display: none;
+        color: white;
+        text-decoration: none;
+      }
+
+      .login-link a {
+        color: white;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+    </style>
+  </body>
+</html>
